@@ -1,0 +1,11 @@
+C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\bin\Debug\tp5.exe.config
+C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\bin\Debug\tp5.exe
+C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\bin\Debug\tp5.pdb
+C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\obj\Debug\tp5.csproj.AssemblyReference.cache
+C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\obj\Debug\tp5.csproj.SuggestedBindingRedirects.cache
+C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\obj\Debug\tp5.Interfaces.FormularioPrincipal.resources
+C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\obj\Debug\tp5.Properties.Resources.resources
+C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\obj\Debug\tp5.csproj.GenerateResource.cache
+C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\obj\Debug\tp5.csproj.CoreCompileInputs.cache
+C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\obj\Debug\tp5.exe
+C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\obj\Debug\tp5.pdb
