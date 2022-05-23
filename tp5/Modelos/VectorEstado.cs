@@ -10,7 +10,7 @@
         public void CalcularSiguienteEstado()
         {
             _anterior = Actual;
-            Actual = Vector.SimularSiguienteEstado(_anterior);
+            Actual = _anterior.SimularSiguienteEstado();
         }
     }
 }

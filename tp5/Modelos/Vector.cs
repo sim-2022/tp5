@@ -70,38 +70,38 @@ namespace tp5.Modelos
             };
         }
 
-        public static Vector SimularSiguienteEstado(Vector vectorAnterior)
+        public Vector SimularSiguienteEstado()
         {
-            var simulacionPorEvento = new Dictionary<TipoEvento, Func<Vector, Vector>>
+            var simulacionPorEvento = new Dictionary<TipoEvento, Func<Vector>>
             {
                 { TipoEvento.LlegadaAuto, SimularLlegadaAuto },
                 { TipoEvento.FinEstacionamiento, SimularFinEstacionamiento },
             };
             
-            var proximoTipoEvento = vectorAnterior.ObtenerProximoTipoEvento();
+            var proximoTipoEvento = ObtenerProximoTipoEvento();
 
             if (!simulacionPorEvento.ContainsKey(proximoTipoEvento))
                 throw new Exception($"No se esperaba recibir el tipo de evento: {proximoTipoEvento}");
 
-            return simulacionPorEvento[proximoTipoEvento](vectorAnterior);
+            return simulacionPorEvento[proximoTipoEvento]();
         }
 
-        private static Vector SimularLlegadaAuto(Vector vectorAnterior)
+        private Vector SimularLlegadaAuto()
         {
             var randomTipoAuto = Random.NextDouble();
-            var tipoAuto = TipoAutoSegunNumeroAleatorio(vectorAnterior.RandomTipoAuto);
+            var tipoAuto = TipoAutoSegunNumeroAleatorio(RandomTipoAuto);
 
             var randomTiempoRelojSalidaAuto = Random.NextDouble();
-            var tiempoRelojSalidaAuto = vectorAnterior.ProximaLlegadaAuto +
+            var tiempoRelojSalidaAuto = ProximaLlegadaAuto +
                                         TiempoEstacionadoSegunNumeroAleatorio(randomTiempoRelojSalidaAuto);
 
-            var cantidadAutosSinEntrar = vectorAnterior.CantidadAutosSinEntrar;
+            var cantidadAutosSinEntrar = CantidadAutosSinEntrar;
 
 
             var tiempoLlegadaAuto = Random.Next(1, Lambda);
-            var proximaLlegadaAuto = vectorAnterior.ProximaLlegadaAuto + tiempoLlegadaAuto;
+            var proximaLlegadaAuto = ProximaLlegadaAuto + tiempoLlegadaAuto;
 
-            var playaEstacionamiento = vectorAnterior.PlayaEstacionamiento.Clonar();
+            var playaEstacionamiento = PlayaEstacionamiento.Clonar();
             if (playaEstacionamiento.HayLugar())
                 playaEstacionamiento.EstacionarAuto(tiempoRelojSalidaAuto, tipoAuto);
             else
@@ -109,7 +109,7 @@ namespace tp5.Modelos
 
             var nuevoVector = new Vector
             {
-                Reloj = vectorAnterior.ProximaLlegadaAuto,
+                Reloj = ProximaLlegadaAuto,
                 Evento = TipoEvento.LlegadaAuto,
                 TiempoLlegadaAuto = tiempoLlegadaAuto,
                 ProximaLlegadaAuto = proximaLlegadaAuto,
@@ -123,24 +123,24 @@ namespace tp5.Modelos
             return nuevoVector;
         }
 
-        private static Vector SimularFinEstacionamiento(Vector vectorAnterior)
+        private Vector SimularFinEstacionamiento()
         {
-            var sectorPorDesocupar = vectorAnterior.PlayaEstacionamiento.ProximoSectorPorDesocupar();
+            var sectorPorDesocupar = PlayaEstacionamiento.ProximoSectorPorDesocupar();
             var tiempoSalida = sectorPorDesocupar.Salida;
-            var playaEstacionamiento = vectorAnterior.PlayaEstacionamiento.Clonar();
+            var playaEstacionamiento = PlayaEstacionamiento.Clonar();
             playaEstacionamiento.DesocuparSector(sectorPorDesocupar.Id);
 
             var nuevoVector = new Vector
             {
                 Reloj = tiempoSalida,
                 Evento = TipoEvento.FinEstacionamiento,
-                TiempoLlegadaAuto = vectorAnterior.TiempoLlegadaAuto,
-                ProximaLlegadaAuto = vectorAnterior.ProximaLlegadaAuto,
-                RandomTipoAuto = vectorAnterior.RandomTipoAuto,
-                TipoAuto = vectorAnterior.TipoAuto,
-                RandomTiempoRelojSalidaAuto = vectorAnterior.RandomTiempoRelojSalidaAuto,
+                TiempoLlegadaAuto = TiempoLlegadaAuto,
+                ProximaLlegadaAuto = ProximaLlegadaAuto,
+                RandomTipoAuto = RandomTipoAuto,
+                TipoAuto = TipoAuto,
+                RandomTiempoRelojSalidaAuto = RandomTiempoRelojSalidaAuto,
                 PlayaEstacionamiento = playaEstacionamiento,
-                CantidadAutosSinEntrar = vectorAnterior.CantidadAutosSinEntrar,
+                CantidadAutosSinEntrar = CantidadAutosSinEntrar,
                 CantidadSectoresOcupados = playaEstacionamiento.ContarSectoresOcupados(),
             };
             return nuevoVector;
