@@ -170,7 +170,7 @@ namespace tp5.Modelos
                 throw new ArgumentOutOfRangeException(nameof(numeroAleatorio));
 
             if (numeroAleatorio >= 0 && numeroAleatorio < 0.5)
-                return 60;
+                return 60;  
 
             if (numeroAleatorio >= 0.5 && numeroAleatorio < 0.8)
                 return 120;

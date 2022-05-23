@@ -30,7 +30,11 @@ namespace tp5.Interfaces
             CalcularRango(int.Parse(cbCantidadIteraciones.SelectedItem.ToString()));
             BtnSimular_Click(sender, e);
         }
-
+        private void btnVariables_Click(object sender, EventArgs e)
+        {
+            frmVariables form = new frmVariables();
+            form.ShowDialog();
+        }
         private void BtnFiltrar_Click(object sender, EventArgs e)
         {
             try

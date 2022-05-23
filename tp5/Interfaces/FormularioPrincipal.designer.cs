@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioPrincipal));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnVariables = new System.Windows.Forms.Button();
             this.lblTiempoGrafico = new System.Windows.Forms.Label();
             this.labelSimulaciones = new System.Windows.Forms.Label();
             this.gbRango = new System.Windows.Forms.GroupBox();
@@ -56,6 +57,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panel1.Controls.Add(this.btnVariables);
             this.panel1.Controls.Add(this.lblTiempoGrafico);
             this.panel1.Controls.Add(this.labelSimulaciones);
             this.panel1.Controls.Add(this.gbRango);
@@ -65,8 +67,19 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(522, 89);
+            this.panel1.Size = new System.Drawing.Size(645, 89);
             this.panel1.TabIndex = 1;
+            // 
+            // btnVariables
+            // 
+            this.btnVariables.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVariables.Location = new System.Drawing.Point(548, 63);
+            this.btnVariables.Name = "btnVariables";
+            this.btnVariables.Size = new System.Drawing.Size(83, 23);
+            this.btnVariables.TabIndex = 9;
+            this.btnVariables.Text = "Variables";
+            this.btnVariables.UseVisualStyleBackColor = true;
+            this.btnVariables.Click += new System.EventHandler(this.btnVariables_Click);
             // 
             // lblTiempoGrafico
             // 
@@ -88,11 +101,12 @@
             // 
             // gbRango
             // 
+            this.gbRango.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.gbRango.Controls.Add(this.btnFiltrar);
             this.gbRango.Controls.Add(this.txtDesde);
             this.gbRango.Controls.Add(this.txtHasta);
             this.gbRango.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gbRango.Location = new System.Drawing.Point(251, 12);
+            this.gbRango.Location = new System.Drawing.Point(389, 12);
             this.gbRango.Name = "gbRango";
             this.gbRango.Size = new System.Drawing.Size(248, 48);
             this.gbRango.TabIndex = 6;
@@ -163,7 +177,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 89);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(522, 262);
+            this.panel2.Size = new System.Drawing.Size(645, 244);
             this.panel2.TabIndex = 2;
             // 
             // dgvTabla
@@ -222,14 +236,14 @@
             this.dgvTabla.RowTemplate.ReadOnly = true;
             this.dgvTabla.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTabla.Size = new System.Drawing.Size(522, 262);
+            this.dgvTabla.Size = new System.Drawing.Size(645, 244);
             this.dgvTabla.TabIndex = 0;
             // 
             // FormularioPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 351);
+            this.ClientSize = new System.Drawing.Size(645, 333);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -267,5 +281,6 @@
         private System.Windows.Forms.DataGridView dgvTabla;
         private System.Windows.Forms.Button btnSimular;
         private System.Windows.Forms.ComboBox cbCantidadIteraciones;
+        private System.Windows.Forms.Button btnVariables;
     }
 }
