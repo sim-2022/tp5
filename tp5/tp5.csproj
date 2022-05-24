@@ -58,7 +58,7 @@
     <Compile Include="Interfaces\frmProbabilidades.Designer.cs">
       <DependentUpon>frmProbabilidades.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modelos\clsProbabilidades.cs" />
+    <Compile Include="Modelos\ClsProbabilidades.cs" />
     <Compile Include="Modelos\Dominio\Enumeradores\EstadoSector.cs" />
     <Compile Include="Modelos\Dominio\Enumeradores\TipoAuto.cs" />
     <Compile Include="Modelos\Dominio\Enumeradores\TipoEvento.cs" />

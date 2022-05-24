@@ -31,3 +31,4 @@ C:\Users\agush\OneDrive\Escritorio\tp5\tp5\obj\Debug\tp5.csproj.CoreCompileInput
 C:\Users\agush\OneDrive\Escritorio\tp5\tp5\obj\Debug\tp5.exe
 C:\Users\agush\OneDrive\Escritorio\tp5\tp5\obj\Debug\tp5.pdb
 C:\Users\agush\OneDrive\Escritorio\tp5\tp5\obj\Debug\tp5.Interfaces.frmProbabilidades.resources
+C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\obj\Debug\tp5.Interfaces.frmProbabilidades.resources
