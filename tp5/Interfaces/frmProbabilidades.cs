@@ -29,11 +29,13 @@ namespace tp5.Interfaces
         {
             if (ClsProbabilidades.DataTableTamaño == null)
                 clsProbabilidades.GenerarTamanio();
+
             if (ClsProbabilidades.DataTableTiempo == null)
                 clsProbabilidades.GenerarTiempo();
             
             dgTam.DataSource = ClsProbabilidades.DataTableTamaño;
             dgEst.DataSource = ClsProbabilidades.DataTableTiempo;
+
             txtCobro.Text = ClsProbabilidades.TiempoCobro.ToString();
             txtLlegadas.Text = ClsProbabilidades.IndiceLlegadas.ToString();
 
@@ -52,8 +54,10 @@ namespace tp5.Interfaces
             {
                 clsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTamaño);
                 clsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTiempo);
+
                 ClsProbabilidades.IndiceLlegadas = Convert.ToInt32(txtLlegadas.Text);
                 ClsProbabilidades.TiempoCobro = Convert.ToInt32(txtCobro.Text);
+
                 MessageBox.Show("Probabilidades actualizadas correctamente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
