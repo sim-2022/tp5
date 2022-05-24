@@ -52,15 +52,11 @@ namespace tp5.Utilidades
             fila["Random Tiempo Salida Auto"] = Redondear(vector.RandomTiempoRelojSalidaAuto);
             fila["Cantidad Autos Sin Entrar"] = vector.CantidadAutosSinEntrar;
             fila["Cantidad Sectores Ocupados"] = vector.CantidadSectoresOcupados;
-            var i = 1;
             foreach (var sector in vector.PlayaEstacionamiento.Sectores)
             {
-                fila[$"Estado [Sector {i}]"] =
-                    sector.EstadoSector is EstadoSector.Ocupado ? sector.Estado : string.Empty;
-                fila[$"Auto [Sector {i}]"] = sector.TipoAuto?.ObtenerDescripcion() ?? string.Empty;
-                fila[$"Salida [Sector {i}]"] =
-                    sector.TipoAuto is null ? string.Empty : sector.Salida.ToString();
-                i++;
+                fila[$"Auto [Sector {sector.Id}]"] = sector.TipoAuto?.ObtenerDescripcion() ?? string.Empty;
+                fila[$"Estado [Sector {sector.Id}]"] = sector.EstadoSector is EstadoSector.Ocupado ? sector.Estado : string.Empty;
+                fila[$"Salida [Sector {sector.Id}]"] = sector.TipoAuto is null ? string.Empty : sector.Salida.ToString();
             }
 
             tabla.Rows.Add(fila);
