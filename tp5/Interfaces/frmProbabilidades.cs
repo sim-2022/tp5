@@ -8,7 +8,7 @@ namespace tp5.Interfaces
     public partial class frmProbabilidades : Form
     {
         #region Propiedades      
-        private  clsProbabilidades objVariables = new clsProbabilidades();
+        private  ClsProbabilidades objVariables = new ClsProbabilidades();
         private string errorMessage = "";
         #endregion
 
@@ -22,15 +22,15 @@ namespace tp5.Interfaces
         #region Eventos
         private void frmVariables_Load(object sender, EventArgs e)
         {
-            if (clsProbabilidades.dtTamanio == null)
-                objVariables.generarTamanio();
-            if (clsProbabilidades.dtTiempo == null)
-                objVariables.generarTiempo();
+            if (ClsProbabilidades.dtTamanio == null)
+                objVariables.GenerarTamanio();
+            if (ClsProbabilidades.dtTiempo == null)
+                objVariables.GenerarTiempo();
             
-            dgTam.DataSource = clsProbabilidades.dtTamanio;
-            dgEst.DataSource = clsProbabilidades.dtTiempo;
-            txtCobro.Text = clsProbabilidades.tiempoCobro.ToString();
-            txtLlegadas.Text = clsProbabilidades.indiceLlegadas.ToString();
+            dgTam.DataSource = ClsProbabilidades.dtTamanio;
+            dgEst.DataSource = ClsProbabilidades.dtTiempo;
+            txtCobro.Text = ClsProbabilidades.tiempoCobro.ToString();
+            txtLlegadas.Text = ClsProbabilidades.indiceLlegadas.ToString();
 
             dgEst.Columns[0].ReadOnly = dgEst.Columns[2].ReadOnly = dgEst.Columns[3].ReadOnly = dgEst.Columns[4].ReadOnly = true;
             dgTam.Columns[0].ReadOnly = dgTam.Columns[2].ReadOnly = dgTam.Columns[3].ReadOnly = dgTam.Columns[4].ReadOnly = true;
@@ -44,10 +44,10 @@ namespace tp5.Interfaces
         {
             if (Validar())
             {
-                objVariables.Calcular_Intervalos(clsProbabilidades.dtTamanio);
-                objVariables.Calcular_Intervalos(clsProbabilidades.dtTiempo);
-                clsProbabilidades.indiceLlegadas = Convert.ToInt32(txtLlegadas.Text);
-                clsProbabilidades.tiempoCobro = Convert.ToInt32(txtCobro.Text);
+                objVariables.CalcularIntervalos(ClsProbabilidades.dtTamanio);
+                objVariables.CalcularIntervalos(ClsProbabilidades.dtTiempo);
+                ClsProbabilidades.indiceLlegadas = Convert.ToInt32(txtLlegadas.Text);
+                ClsProbabilidades.tiempoCobro = Convert.ToInt32(txtCobro.Text);
                 MessageBox.Show("Probabilidades actualizadas correctamente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -67,7 +67,7 @@ namespace tp5.Interfaces
                 return false;
             }
 
-            foreach (DataRow row in clsProbabilidades.dtTiempo.Rows)
+            foreach (DataRow row in ClsProbabilidades.dtTiempo.Rows)
             {
                 string tiempo = "";
                 
@@ -78,7 +78,7 @@ namespace tp5.Interfaces
 
                 totalTiempo += Convert.ToDecimal(tiempo);
             }
-            foreach (DataRow row in clsProbabilidades.dtTamanio.Rows)
+            foreach (DataRow row in ClsProbabilidades.dtTamanio.Rows)
             {
                 string tamaño = "";
                 

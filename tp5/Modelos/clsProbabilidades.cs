@@ -3,7 +3,7 @@ using System.Data;
 
 namespace tp5.Modelos
 {
-    public class clsProbabilidades
+    public class ClsProbabilidades
     {
         #region Propiedades
         public static DataTable dtTamanio;
@@ -13,11 +13,11 @@ namespace tp5.Modelos
         #endregion
 
         #region Constructor
-        public clsProbabilidades() {}
+        public ClsProbabilidades() {}
         #endregion
 
         #region Metodos 
-        public DataTable generarTamanio()
+        public DataTable GenerarTamanio()
         {
             dtTamanio = new DataTable();
             dtTamanio.Columns.Add("Tamaño");
@@ -32,7 +32,7 @@ namespace tp5.Modelos
 
             return dtTamanio;
         }
-        public DataTable generarTiempo()
+        public DataTable GenerarTiempo()
         {
             dtTiempo = new DataTable();
             dtTiempo.Columns.Add("Tiempo");
@@ -48,7 +48,7 @@ namespace tp5.Modelos
 
             return dtTiempo;
         }
-        public DataTable Calcular_Intervalos(DataTable tabla)
+        public DataTable CalcularIntervalos(DataTable tabla)
         {
             var acumulado = .0;
             var desde = .0;
