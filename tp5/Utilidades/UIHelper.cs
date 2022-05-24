@@ -52,6 +52,7 @@ namespace tp5.Utilidades
             fila["Random Tiempo Salida Auto"] = Redondear(vector.RandomTiempoRelojSalidaAuto);
             fila["Cantidad Autos Sin Entrar"] = vector.CantidadAutosSinEntrar;
             fila["Cantidad Sectores Ocupados"] = vector.CantidadSectoresOcupados;
+
             foreach (var sector in vector.PlayaEstacionamiento.Sectores)
             {
                 fila[$"Auto [Sector {sector.Id}]"] = sector.TipoAuto?.ObtenerDescripcion() ?? string.Empty;
