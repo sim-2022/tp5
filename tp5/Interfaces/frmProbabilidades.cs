@@ -9,8 +9,8 @@ namespace tp5.Interfaces
     {
         #region Propiedades    
         
-        private readonly ClsProbabilidades clsProbabilidades = new ClsProbabilidades();
-        private string errorMessage = string.Empty;
+        private readonly ClsProbabilidades _clsProbabilidades = new ClsProbabilidades();
+        private string _errorMessage = string.Empty;
 
         #endregion
 
@@ -25,10 +25,10 @@ namespace tp5.Interfaces
         private void FrmVariables_Load(object sender, EventArgs e)
         {
             if (ClsProbabilidades.DataTableTamaño == null)
-                clsProbabilidades.GenerarTamanio();
+                _clsProbabilidades.GenerarTamanio();
 
             if (ClsProbabilidades.DataTableTiempo == null)
-                clsProbabilidades.GenerarTiempo();
+                _clsProbabilidades.GenerarTiempo();
             
             dgTam.DataSource = ClsProbabilidades.DataTableTamaño;
             dgEst.DataSource = ClsProbabilidades.DataTableTiempo;
@@ -46,8 +46,8 @@ namespace tp5.Interfaces
         {
             if (Validar())
             {
-                clsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTamaño);
-                clsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTiempo);
+                _clsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTamaño);
+                _clsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTiempo);
 
                 ClsProbabilidades.IndiceLlegadas = Convert.ToInt32(txtLlegadas.Text);
                 ClsProbabilidades.TiempoCobro = Convert.ToInt32(txtCobro.Text);
@@ -56,7 +56,7 @@ namespace tp5.Interfaces
                 Close();
             }
             else
-                MessageBox.Show(errorMessage, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(_errorMessage, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #endregion
@@ -70,7 +70,7 @@ namespace tp5.Interfaces
 
             if (txtCobro.Text == string.Empty || txtLlegadas.Text == string.Empty)
             {
-                errorMessage = "Debe ingresar todos los parametros requeridos.";
+                _errorMessage = "Debe ingresar todos los parametros requeridos.";
                 return false;
             }
 
@@ -102,7 +102,7 @@ namespace tp5.Interfaces
 
             if (totalTiempo != 1 || totalTamaño != 1)
             {
-                errorMessage = "Las probabilidades acumuladas deben ser iguales a 1";
+                _errorMessage = "Las probabilidades acumuladas deben ser iguales a 1";
                 return false;
             }
 
