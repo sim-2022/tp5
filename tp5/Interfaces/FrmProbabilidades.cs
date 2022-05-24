@@ -41,13 +41,13 @@ namespace tp5.Interfaces
             try
             {
                 ValidarProbabilidades();
-                var parametros = ObtenerParametros();
+                var (tiempoCobro, indiceLlegadas) = ObtenerParametros();
                 
                 ClsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTamaño);
                 ClsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTiempo);
 
-                ClsProbabilidades.IndiceLlegadas = parametros.indiceLlegadas;
-                ClsProbabilidades.TiempoCobro = parametros.tiempoCobro;
+                ClsProbabilidades.IndiceLlegadas = indiceLlegadas;
+                ClsProbabilidades.TiempoCobro = tiempoCobro;
 
                 UiHelper.MostrarMensaje(mensaje: "Probabilidades actualizadas correctamente", "Atención");
                 Close();
