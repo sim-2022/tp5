@@ -8,13 +8,13 @@ using tp5.Utilidades;
 
 namespace tp5.Interfaces
 {
-    public partial class FormPrincipal : Form
+    public partial class FrmPrincipal : Form
     {
         private const int MaximoIteraciones = 100_000;
 
         private List<(int Indice, Vector Vector)> ListaEstadosVector { get; set; }
 
-        public FormPrincipal()
+        public FrmPrincipal()
         {
             InitializeComponent();
             ListaEstadosVector = new List<(int Indice, Vector Vector)>();
@@ -47,7 +47,7 @@ namespace tp5.Interfaces
             }
             catch (Exception exception)
             {
-                MostrarMensajeError(exception);
+                MostrarExcepcion(exception);
             }
         }
 
@@ -102,7 +102,7 @@ namespace tp5.Interfaces
             }
             catch (Exception ex)
             {
-                MostrarMensajeError(ex);
+                MostrarExcepcion(ex);
             }
         }
 
@@ -149,7 +149,7 @@ namespace tp5.Interfaces
 
         }
 
-        private static void MostrarMensajeError(Exception ex)
+        private static void MostrarExcepcion(Exception ex)
         {
             MessageBox.Show(
                 text: ex.Message,

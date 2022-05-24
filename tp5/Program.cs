@@ -18,7 +18,7 @@ namespace tp5
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormPrincipal());
+            Application.Run(new FrmPrincipal());
         }
     }
 }
