@@ -8,12 +8,6 @@ namespace tp5.Interfaces
 {
     public partial class FrmProbabilidades : Form
     {
-        #region Propiedades
-
-        private readonly ClsProbabilidades _clsProbabilidades = new ClsProbabilidades();
-
-        #endregion
-
         #region Constructor
 
         public FrmProbabilidades() => InitializeComponent();
