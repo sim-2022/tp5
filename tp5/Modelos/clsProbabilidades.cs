@@ -50,15 +50,14 @@ namespace tp5.Modelos
         }
         public DataTable Calcular_Intervalos(DataTable tabla)
         {
-            double acumulado = 0;
-            double desde = 0;
-            double hasta = 0;
+            var acumulado = .0;
+            var desde = .0;
             for (int i = 0; i < tabla.Rows.Count; i++)
             {
                 acumulado += Convert.ToDouble(tabla.Rows[i][1]);
                 tabla.Rows[i][2] = acumulado;
                 tabla.Rows[i][3] = desde;
-                hasta = Convert.ToDouble(tabla.Rows[i][2]);
+                var hasta = Convert.ToDouble(tabla.Rows[i][2]);
                 tabla.Rows[i][4] = hasta - 0.01;
                 desde = hasta;
             }
