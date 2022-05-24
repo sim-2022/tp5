@@ -81,7 +81,7 @@
             this.btnVariables.TabIndex = 9;
             this.btnVariables.Text = "Probabilidades";
             this.btnVariables.UseVisualStyleBackColor = true;
-            this.btnVariables.Click += new System.EventHandler(this.btnVariables_Click);
+            this.btnVariables.Click += new System.EventHandler(this.BtnVariables_Click);
             // 
             // lblTiempoGrafico
             // 

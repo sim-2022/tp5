@@ -31,7 +31,7 @@ namespace tp5.Interfaces
             BtnSimular_Click(sender, e);
         }
         
-        private void btnVariables_Click(object sender, EventArgs e)
+        private void BtnVariables_Click(object sender, EventArgs e)
         {
             var form = new FrmProbabilidades();
             form.ShowDialog();
