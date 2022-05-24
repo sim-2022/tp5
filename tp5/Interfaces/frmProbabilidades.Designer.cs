@@ -1,7 +1,7 @@
 ﻿
 namespace tp5.Interfaces
 {
-    partial class frmProbabilidades
+    partial class FrmProbabilidades
     {
         /// <summary>
         /// Required designer variable.
@@ -163,7 +163,7 @@ namespace tp5.Interfaces
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnCancelar);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "frmProbabilidades";
+            this.Name = "FrmProbabilidades";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmVariables";
             this.Load += new System.EventHandler(this.FrmVariables_Load);

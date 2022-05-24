@@ -8,13 +8,13 @@ using tp5.Utilidades;
 
 namespace tp5.Interfaces
 {
-    public partial class FormularioPrincipal : Form
+    public partial class FormPrincipal : Form
     {
         private const int MaximoIteraciones = 100_000;
 
         private List<(int Indice, Vector Vector)> ListaEstadosVector { get; set; }
 
-        public FormularioPrincipal()
+        public FormPrincipal()
         {
             InitializeComponent();
             ListaEstadosVector = new List<(int Indice, Vector Vector)>();
@@ -35,7 +35,7 @@ namespace tp5.Interfaces
         }
         private void btnVariables_Click(object sender, EventArgs e)
         {
-            frmProbabilidades form = new frmProbabilidades();
+            FrmProbabilidades form = new FrmProbabilidades();
             form.ShowDialog();
         }
         private void BtnFiltrar_Click(object sender, EventArgs e)

@@ -5,7 +5,7 @@ using tp5.Modelos;
 
 namespace tp5.Interfaces
 {
-    public partial class frmProbabilidades : Form
+    public partial class FrmProbabilidades : Form
     {
         #region Propiedades    
         
@@ -16,7 +16,7 @@ namespace tp5.Interfaces
 
         #region Constructor
 
-        public frmProbabilidades() => InitializeComponent();
+        public FrmProbabilidades() => InitializeComponent();
 
         #endregion
 
