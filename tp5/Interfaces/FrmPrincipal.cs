@@ -33,7 +33,7 @@ namespace tp5.Interfaces
         
         private void btnVariables_Click(object sender, EventArgs e)
         {
-            FrmProbabilidades form = new FrmProbabilidades();
+            var form = new FrmProbabilidades();
             form.ShowDialog();
         }
         
@@ -81,11 +81,13 @@ namespace tp5.Interfaces
             ListaEstadosVector.Clear();
             var timer = new Stopwatch();
             timer.Start();
+
             try
             {
                 var numeroFila = 0;
                 var cantidadIteraciones = ObtenerIteraciones();
                 var vectorEstado = new VectorEstado();
+
                 ListaEstadosVector.Add((numeroFila, vectorEstado.Actual));
 
                 while (++numeroFila < cantidadIteraciones + 1)
@@ -137,12 +139,15 @@ namespace tp5.Interfaces
             var timer = new Stopwatch();
             timer.Start();
             var tabla = UiHelper.CrearEstructuraTabla();
+
             ListaEstadosVector
                 .Where(estado => estado.Indice >= numeroFilaDesde && estado.Indice <= numeroFilaHasta)
                 .ToList()
                 .ForEach(estado => UiHelper.AgregarFilaEnTabla(tabla, estado.Vector, estado.Indice));
+
             dgvTabla.DataSource = tabla;
             dgvTabla.Refresh();
+
             timer.Stop();
             ActualizarMensajeTiempo(timer, lblTiempoGrafico, "Procesamiento de Gráficos");
 
