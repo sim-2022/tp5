@@ -69,7 +69,7 @@ namespace tp5.Interfaces
 
         #region Metodos
 
-        public bool Validar() 
+        private bool Validar() 
         {
             decimal totalTiempo = 0;
             decimal totalTamaño = 0;
