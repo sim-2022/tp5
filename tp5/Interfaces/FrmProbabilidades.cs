@@ -8,10 +8,9 @@ namespace tp5.Interfaces
 {
     public partial class FrmProbabilidades : Form
     {
-        #region Propiedades    
-        
+        #region Propiedades
+
         private readonly ClsProbabilidades _clsProbabilidades = new ClsProbabilidades();
-        private string _errorMessage = string.Empty;
 
         #endregion
 
@@ -30,7 +29,7 @@ namespace tp5.Interfaces
 
             if (ClsProbabilidades.DataTableTiempo == null)
                 _clsProbabilidades.GenerarTiempo();
-            
+
             dgTam.DataSource = ClsProbabilidades.DataTableTamaño;
             dgEst.DataSource = ClsProbabilidades.DataTableTiempo;
 
@@ -45,61 +44,63 @@ namespace tp5.Interfaces
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            try
             {
+                ValidarProbabilidades();
+                var parametros = ObtenerParametros();
+                
                 _clsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTamaño);
                 _clsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTiempo);
 
-                ClsProbabilidades.IndiceLlegadas = Convert.ToInt32(txtIndiceLlegadas.Text);
-                ClsProbabilidades.TiempoCobro = Convert.ToInt32(txtTiempoCobro.Text);
-                
-                UiHelper.MostrarMensaje(mensaje:"Probabilidades actualizadas correctamente", "Atención");
+                ClsProbabilidades.IndiceLlegadas = parametros.indiceLlegadas;
+                ClsProbabilidades.TiempoCobro = parametros.tiempoCobro;
+
+                UiHelper.MostrarMensaje(mensaje: "Probabilidades actualizadas correctamente", "Atención");
                 Close();
             }
-            else
-                UiHelper.MostrarMensaje(_errorMessage, "Atención");
+            catch (Exception excepcion)
+            {
+                UiHelper.MostrarExcepcion(excepcion);
+            }
         }
 
         #endregion
 
         #region Metodos
 
-        private bool Validar() 
+        private (int tiempoCobro, int indiceLlegadas) ObtenerParametros()
+        {
+            if (!int.TryParse(txtIndiceLlegadas.Text, out var indiceLlegadas))
+                throw new Exception("El indice de llegadas no es válido.");
+
+            if (txtTiempoCobro.Text == string.Empty || txtIndiceLlegadas.Text == string.Empty)
+                throw new Exception("Debe ingresar el tiempo de cobro y el indice de llegada.");
+
+            if (!int.TryParse(txtTiempoCobro.Text, out var tiempoCobro))
+                throw new Exception("El tiempo de cobro no es válido.");
+
+            return (tiempoCobro, indiceLlegadas);
+        }
+
+        private void ValidarProbabilidades()
         {
             var totalTiempo = 0m;
             var totalTamaño = 0m;
 
-            if (txtTiempoCobro.Text == string.Empty || txtIndiceLlegadas.Text == string.Empty)
-            {
-                _errorMessage = "Debe ingresar todos los parametros requeridos.";
-                return false;
-            }
-
             foreach (DataRow row in ClsProbabilidades.DataTableTiempo.Rows)
             {
-                var tiempo = row[1].ToString().Contains(".") ? 
-                                   row[1].ToString().Replace(".", ",") : 
-                                   row[1].ToString();
-
+                var tiempo = row[1].ToString().Contains(".") ? row[1].ToString().Replace(".", ",") : row[1].ToString();
                 totalTiempo += Convert.ToDecimal(tiempo);
             }
 
             foreach (DataRow row in ClsProbabilidades.DataTableTamaño.Rows)
             {
-                var tamaño = row[1].ToString().Contains(".") ? 
-                                   row[1].ToString().Replace(".", ",") : 
-                                   row[1].ToString();
-
+                var tamaño = row[1].ToString().Contains(".") ? row[1].ToString().Replace(".", ",") : row[1].ToString();
                 totalTamaño += Convert.ToDecimal(tamaño);
             }
 
             if (totalTiempo != 1 || totalTamaño != 1)
-            {
-                _errorMessage = "Las probabilidades acumuladas deben ser iguales a 1";
-                return false;
-            }
-
-            return true;
+                throw new Exception("Las probabilidades acumuladas deben ser iguales a 1");
         }
 
         #endregion
