@@ -45,7 +45,7 @@ namespace tp5.Interfaces
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace tp5.Interfaces
                 ClsProbabilidades.TiempoCobro = Convert.ToInt32(txtCobro.Text);
 
                 MessageBox.Show("Probabilidades actualizadas correctamente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                Close();
             }
             else
                 MessageBox.Show(errorMessage, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
