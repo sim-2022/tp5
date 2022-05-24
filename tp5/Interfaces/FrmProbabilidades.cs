@@ -76,26 +76,18 @@ namespace tp5.Interfaces
 
             foreach (DataRow row in ClsProbabilidades.DataTableTiempo.Rows)
             {
-                var tiempo = string.Empty;
-                
-                if (row[1].ToString().Contains("."))
-                    tiempo = row[1].ToString().Replace(".", ",");
-
-                else
-                    tiempo = row[1].ToString();
+                var tiempo = row[1].ToString().Contains(".") ? 
+                                   row[1].ToString().Replace(".", ",") : 
+                                   row[1].ToString();
 
                 totalTiempo += Convert.ToDecimal(tiempo);
             }
 
             foreach (DataRow row in ClsProbabilidades.DataTableTamaño.Rows)
             {
-                var tamaño = string.Empty;
-                
-                if (row[1].ToString().Contains("."))
-                    tamaño = row[1].ToString().Replace(".", ",");
-
-                else
-                    tamaño = row[1].ToString();
+                var tamaño = row[1].ToString().Contains(".") ? 
+                                   row[1].ToString().Replace(".", ",") : 
+                                   row[1].ToString();
 
                 totalTamaño += Convert.ToDecimal(tamaño);
             }
