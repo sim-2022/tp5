@@ -10,7 +10,7 @@ namespace tp5.Interfaces
         #region Propiedades    
         
         private  ClsProbabilidades objVariables = new ClsProbabilidades();
-        private string errorMessage = "";
+        private string errorMessage = string.Empty;
 
         #endregion
 
@@ -70,7 +70,7 @@ namespace tp5.Interfaces
             decimal totalTiempo = 0;
             decimal totalTamaño = 0;
 
-            if (txtCobro.Text == "" || txtLlegadas.Text == "")
+            if (txtCobro.Text == string.Empty || txtLlegadas.Text == string.Empty)
             {
                 errorMessage = "Debe ingresar todos los parametros requeridos.";
                 return false;
@@ -78,7 +78,7 @@ namespace tp5.Interfaces
 
             foreach (DataRow row in ClsProbabilidades.DataTableTiempo.Rows)
             {
-                string tiempo = "";
+                string tiempo = string.Empty;
                 
                 if (row[1].ToString().Contains("."))
                     tiempo = row[1].ToString().Replace(".", ",");
@@ -91,7 +91,7 @@ namespace tp5.Interfaces
 
             foreach (DataRow row in ClsProbabilidades.DataTableTamaño.Rows)
             {
-                string tamaño = "";
+                string tamaño = string.Empty;
                 
                 if (row[1].ToString().Contains("."))
                     tamaño = row[1].ToString().Replace(".", ",");
