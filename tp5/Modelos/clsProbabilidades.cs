@@ -54,7 +54,7 @@ namespace tp5.Modelos
         {
             var acumulado = .0;
             var desde = .0;
-            for (int i = 0; i < tabla.Rows.Count; i++)
+            for (var i = 0; i < tabla.Rows.Count; i++)
             {
                 acumulado += Convert.ToDouble(tabla.Rows[i][1]);
                 tabla.Rows[i][2] = acumulado;
