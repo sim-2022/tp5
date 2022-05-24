@@ -22,15 +22,15 @@ namespace tp5.Interfaces
         #region Eventos
         private void frmVariables_Load(object sender, EventArgs e)
         {
-            if (ClsProbabilidades.dtTamanio == null)
+            if (ClsProbabilidades.DataTableTamaño == null)
                 objVariables.GenerarTamanio();
-            if (ClsProbabilidades.dtTiempo == null)
+            if (ClsProbabilidades.DataTableTiempo == null)
                 objVariables.GenerarTiempo();
             
-            dgTam.DataSource = ClsProbabilidades.dtTamanio;
-            dgEst.DataSource = ClsProbabilidades.dtTiempo;
-            txtCobro.Text = ClsProbabilidades.tiempoCobro.ToString();
-            txtLlegadas.Text = ClsProbabilidades.indiceLlegadas.ToString();
+            dgTam.DataSource = ClsProbabilidades.DataTableTamaño;
+            dgEst.DataSource = ClsProbabilidades.DataTableTiempo;
+            txtCobro.Text = ClsProbabilidades.TiempoCobro.ToString();
+            txtLlegadas.Text = ClsProbabilidades.IndiceLlegadas.ToString();
 
             dgEst.Columns[0].ReadOnly = dgEst.Columns[2].ReadOnly = dgEst.Columns[3].ReadOnly = dgEst.Columns[4].ReadOnly = true;
             dgTam.Columns[0].ReadOnly = dgTam.Columns[2].ReadOnly = dgTam.Columns[3].ReadOnly = dgTam.Columns[4].ReadOnly = true;
@@ -44,10 +44,10 @@ namespace tp5.Interfaces
         {
             if (Validar())
             {
-                objVariables.CalcularIntervalos(ClsProbabilidades.dtTamanio);
-                objVariables.CalcularIntervalos(ClsProbabilidades.dtTiempo);
-                ClsProbabilidades.indiceLlegadas = Convert.ToInt32(txtLlegadas.Text);
-                ClsProbabilidades.tiempoCobro = Convert.ToInt32(txtCobro.Text);
+                objVariables.CalcularIntervalos(ClsProbabilidades.DataTableTamaño);
+                objVariables.CalcularIntervalos(ClsProbabilidades.DataTableTiempo);
+                ClsProbabilidades.IndiceLlegadas = Convert.ToInt32(txtLlegadas.Text);
+                ClsProbabilidades.TiempoCobro = Convert.ToInt32(txtCobro.Text);
                 MessageBox.Show("Probabilidades actualizadas correctamente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -67,7 +67,7 @@ namespace tp5.Interfaces
                 return false;
             }
 
-            foreach (DataRow row in ClsProbabilidades.dtTiempo.Rows)
+            foreach (DataRow row in ClsProbabilidades.DataTableTiempo.Rows)
             {
                 string tiempo = "";
                 
@@ -78,7 +78,7 @@ namespace tp5.Interfaces
 
                 totalTiempo += Convert.ToDecimal(tiempo);
             }
-            foreach (DataRow row in ClsProbabilidades.dtTamanio.Rows)
+            foreach (DataRow row in ClsProbabilidades.DataTableTamaño.Rows)
             {
                 string tamaño = "";
                 

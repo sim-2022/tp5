@@ -153,10 +153,10 @@ namespace tp5.Modelos
 
         private TipoAuto TipoAutoSegunNumeroAleatorio(double numeroAleatorio)
         {
-            var limInf1 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.dtTamanio.Rows[0][3]));
-            var limSup1 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.dtTamanio.Rows[0][4]));
-            var limInf2 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.dtTamanio.Rows[1][3]));
-            var limSup2 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.dtTamanio.Rows[1][4]));
+            var limInf1 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.DataTableTamaño.Rows[0][3]));
+            var limSup1 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.DataTableTamaño.Rows[0][4]));
+            var limInf2 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.DataTableTamaño.Rows[1][3]));
+            var limSup2 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.DataTableTamaño.Rows[1][4]));
             
             if (numeroAleatorio < 0)
                 throw new ArgumentOutOfRangeException(nameof(numeroAleatorio));
@@ -172,12 +172,12 @@ namespace tp5.Modelos
 
         private int TiempoEstacionadoSegunNumeroAleatorio(double numeroAleatorio)
         {
-            var limInf1 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.dtTamanio.Rows[0][3]));
-            var limSup1 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.dtTamanio.Rows[0][4]));
-            var limInf2 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.dtTamanio.Rows[1][3]));
-            var limSup2 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.dtTamanio.Rows[1][4]));
-            var limInf3 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.dtTamanio.Rows[2][3]));
-            var limSup3 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.dtTamanio.Rows[2][4]));
+            var limInf1 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.DataTableTamaño.Rows[0][3]));
+            var limSup1 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.DataTableTamaño.Rows[0][4]));
+            var limInf2 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.DataTableTamaño.Rows[1][3]));
+            var limSup2 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.DataTableTamaño.Rows[1][4]));
+            var limInf3 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.DataTableTamaño.Rows[2][3]));
+            var limSup3 = reglasDeNegocio.Truncar4Decimales(Convert.ToDouble(ClsProbabilidades.DataTableTamaño.Rows[2][4]));
 
             if (numeroAleatorio < 0)
                 throw new ArgumentOutOfRangeException(nameof(numeroAleatorio));

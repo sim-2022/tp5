@@ -6,10 +6,10 @@ namespace tp5.Modelos
     public class ClsProbabilidades
     {
         #region Propiedades
-        public static DataTable dtTamanio;
-        public static DataTable dtTiempo;
-        public static int indiceLlegadas = 13;
-        public static int tiempoCobro = 2;
+        public static DataTable DataTableTamaño;
+        public static DataTable DataTableTiempo;
+        public static int IndiceLlegadas = 13;
+        public static int TiempoCobro = 2;
         #endregion
 
         #region Constructor
@@ -19,34 +19,34 @@ namespace tp5.Modelos
         #region Metodos 
         public DataTable GenerarTamanio()
         {
-            dtTamanio = new DataTable();
-            dtTamanio.Columns.Add("Tamaño");
-            dtTamanio.Columns.Add("P()");
-            dtTamanio.Columns.Add("P()AC");
-            dtTamanio.Columns.Add("LimInf");
-            dtTamanio.Columns.Add("LimSup");
+            DataTableTamaño = new DataTable();
+            DataTableTamaño.Columns.Add("Tamaño");
+            DataTableTamaño.Columns.Add("P()");
+            DataTableTamaño.Columns.Add("P()AC");
+            DataTableTamaño.Columns.Add("LimInf");
+            DataTableTamaño.Columns.Add("LimSup");
 
-            dtTamanio.Rows.Add("Pequeños", 0.45, 0.45, 0.00, 0.44);
-            dtTamanio.Rows.Add("Grandes", 0.25, 0.70, 0.45, 0.69);
-            dtTamanio.Rows.Add("Utilitarios", 0.30, 1, 0.70, 0.99);
+            DataTableTamaño.Rows.Add("Pequeños", 0.45, 0.45, 0.00, 0.44);
+            DataTableTamaño.Rows.Add("Grandes", 0.25, 0.70, 0.45, 0.69);
+            DataTableTamaño.Rows.Add("Utilitarios", 0.30, 1, 0.70, 0.99);
 
-            return dtTamanio;
+            return DataTableTamaño;
         }
         public DataTable GenerarTiempo()
         {
-            dtTiempo = new DataTable();
-            dtTiempo.Columns.Add("Tiempo");
-            dtTiempo.Columns.Add("P()");
-            dtTiempo.Columns.Add("P()AC");
-            dtTiempo.Columns.Add("LimInf");
-            dtTiempo.Columns.Add("LimSup");
+            DataTableTiempo = new DataTable();
+            DataTableTiempo.Columns.Add("Tiempo");
+            DataTableTiempo.Columns.Add("P()");
+            DataTableTiempo.Columns.Add("P()AC");
+            DataTableTiempo.Columns.Add("LimInf");
+            DataTableTiempo.Columns.Add("LimSup");
 
-            dtTiempo.Rows.Add(1, 0.50, 0.50, 0.00, 0.49);
-            dtTiempo.Rows.Add(2, 0.30, 0.80, 0.50, 0.79);
-            dtTiempo.Rows.Add(3, 0.15, 0.95, 0.80, 0.94);
-            dtTiempo.Rows.Add(4, 0.05, 1, 0.95, 0.99);
+            DataTableTiempo.Rows.Add(1, 0.50, 0.50, 0.00, 0.49);
+            DataTableTiempo.Rows.Add(2, 0.30, 0.80, 0.50, 0.79);
+            DataTableTiempo.Rows.Add(3, 0.15, 0.95, 0.80, 0.94);
+            DataTableTiempo.Rows.Add(4, 0.05, 1, 0.95, 0.99);
 
-            return dtTiempo;
+            return DataTableTiempo;
         }
         public DataTable CalcularIntervalos(DataTable tabla)
         {
