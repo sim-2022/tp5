@@ -42,8 +42,8 @@ namespace tp5.Interfaces
         {
             try
             {
-                var (Desde, Hasta) = ObtenerRangoFiltro();
-                MostrarFilas(numeroFilaDesde: Desde, numeroFilaHasta: Hasta);
+                var (desde, hasta) = ObtenerRangoFiltro();
+                MostrarFilas(numeroFilaDesde: desde, numeroFilaHasta: hasta);
             }
             catch (Exception exception)
             {
