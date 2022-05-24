@@ -24,15 +24,17 @@ namespace tp5.Utilidades
                 new DataColumn("Random Tipo Auto"),
                 new DataColumn("Tipo Auto"),
                 new DataColumn("Random Tiempo Salida Auto"),
-                new DataColumn("Cantidad Autos Sin Entrar"),
-                new DataColumn("Cantidad Sectores Ocupados"),
+                //new DataColumn("Cantidad Sectores Ocupados"),
             };
+
             for (var i = 1; i <= Vector.CantidadSectores; i++)
             {
                 columnas.Add(new DataColumn($"Estado [Sector {i}]"));
                 columnas.Add(new DataColumn($"Auto [Sector {i}]"));
                 columnas.Add(new DataColumn($"Salida [Sector {i}]"));
             }
+
+            columnas.Add(new DataColumn("Cantidad Autos Sin Entrar"));
 
             tabla.Columns.AddRange(columnas.ToArray());
 
@@ -50,8 +52,6 @@ namespace tp5.Utilidades
             fila["Random Tipo Auto"] = Redondear(vector.RandomTipoAuto);
             fila["Tipo Auto"] = vector.TipoAuto.ObtenerDescripcion();
             fila["Random Tiempo Salida Auto"] = Redondear(vector.RandomTiempoRelojSalidaAuto);
-            fila["Cantidad Autos Sin Entrar"] = vector.CantidadAutosSinEntrar;
-            fila["Cantidad Sectores Ocupados"] = vector.CantidadSectoresOcupados;
 
             foreach (var sector in vector.PlayaEstacionamiento.Sectores)
             {
@@ -61,6 +61,9 @@ namespace tp5.Utilidades
             }
 
             tabla.Rows.Add(fila);
+
+            fila["Cantidad Autos Sin Entrar"] = vector.CantidadAutosSinEntrar;
+            //fila["Cantidad Sectores Ocupados"] = vector.CantidadSectoresOcupados;
         }
 
         public static void MostrarMensaje(string mensaje, string titulo)
