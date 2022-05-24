@@ -10,7 +10,7 @@ namespace tp5.Modelos
     {
         #region Propiedades
 
-        private ReglasDeNegocio objReglas = new ReglasDeNegocio();
+        private readonly ReglasDeNegocio objReglas = new ReglasDeNegocio();
         private static readonly Random Random = new Random();
         public static int CantidadSectores = 10;
         private const int Lambda = 13;
