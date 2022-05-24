@@ -26,7 +26,6 @@ namespace tp5.Modelos
 
         #endregion
 
-
         #region Metodos
 
         private static DataTable GenerarTamaño()
