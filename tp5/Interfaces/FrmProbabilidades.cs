@@ -25,10 +25,10 @@ namespace tp5.Interfaces
         private void FrmVariables_Load(object sender, EventArgs e)
         {
             if (ClsProbabilidades.DataTableTamaño == null)
-                _clsProbabilidades.GenerarTamanio();
+                ClsProbabilidades.GenerarTamanio();
 
             if (ClsProbabilidades.DataTableTiempo == null)
-                _clsProbabilidades.GenerarTiempo();
+                ClsProbabilidades.GenerarTiempo();
 
             dgTam.DataSource = ClsProbabilidades.DataTableTamaño;
             dgEst.DataSource = ClsProbabilidades.DataTableTiempo;
@@ -49,8 +49,8 @@ namespace tp5.Interfaces
                 ValidarProbabilidades();
                 var parametros = ObtenerParametros();
                 
-                _clsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTamaño);
-                _clsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTiempo);
+                ClsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTamaño);
+                ClsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTiempo);
 
                 ClsProbabilidades.IndiceLlegadas = parametros.indiceLlegadas;
                 ClsProbabilidades.TiempoCobro = parametros.tiempoCobro;

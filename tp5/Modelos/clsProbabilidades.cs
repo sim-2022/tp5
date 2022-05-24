@@ -17,7 +17,7 @@ namespace tp5.Modelos
 
         #region Metodos 
 
-        public DataTable GenerarTamanio()
+        public static DataTable GenerarTamanio()
         {
             DataTableTamaño = new DataTable();
             DataTableTamaño.Columns.Add("Tamaño");
@@ -33,7 +33,7 @@ namespace tp5.Modelos
             return DataTableTamaño;
         }
 
-        public DataTable GenerarTiempo()
+        public static DataTable GenerarTiempo()
         {
             DataTableTiempo = new DataTable();
             DataTableTiempo.Columns.Add("Tiempo");
@@ -50,7 +50,7 @@ namespace tp5.Modelos
             return DataTableTiempo;
         }
 
-        public DataTable CalcularIntervalos(DataTable tabla)
+        public static DataTable CalcularIntervalos(DataTable tabla)
         {
             var acumulado = .0;
             var desde = .0;
