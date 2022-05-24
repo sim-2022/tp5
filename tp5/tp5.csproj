@@ -52,11 +52,11 @@
     <Compile Include="Interfaces\FrmPrincipal.designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\frmProbabilidades.cs">
+    <Compile Include="Interfaces\FrmProbabilidades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfaces\frmProbabilidades.Designer.cs">
-      <DependentUpon>frmProbabilidades.cs</DependentUpon>
+    <Compile Include="Interfaces\FrmProbabilidades.Designer.cs">
+      <DependentUpon>FrmProbabilidades.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\ClsProbabilidades.cs" />
     <Compile Include="Modelos\Dominio\Enumeradores\EstadoSector.cs" />
@@ -74,8 +74,8 @@
     <EmbeddedResource Include="Interfaces\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfaces\frmProbabilidades.resx">
-      <DependentUpon>frmProbabilidades.cs</DependentUpon>
+    <EmbeddedResource Include="Interfaces\FrmProbabilidades.resx">
+      <DependentUpon>FrmProbabilidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
