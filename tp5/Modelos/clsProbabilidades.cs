@@ -3,15 +3,17 @@ using System.Data;
 
 namespace tp5.Modelos
 {
-    public class clsVariables
+    public class clsProbabilidades
     {
         #region Propiedades
         public static DataTable dtTamanio;
         public static DataTable dtTiempo;
+        public static int indiceLlegadas = 13;
+        public static int tiempoCobro = 2;
         #endregion
 
         #region Constructor
-        public clsVariables() {}
+        public clsProbabilidades() {}
         #endregion
 
         #region Metodos 
@@ -42,7 +44,7 @@ namespace tp5.Modelos
             dtTiempo.Rows.Add(1, 0.50, 0.50, 0.00, 0.49);
             dtTiempo.Rows.Add(2, 0.30, 0.80, 0.50, 0.79);
             dtTiempo.Rows.Add(3, 0.15, 0.95, 0.80, 0.94);
-            dtTiempo.Rows.Add(4, 0.5, 1, 0.95, 0.99);
+            dtTiempo.Rows.Add(4, 0.05, 1, 0.95, 0.99);
 
             return dtTiempo;
         }

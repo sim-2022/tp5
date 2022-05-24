@@ -10,6 +10,7 @@ namespace tp5.Modelos
     {
         #region Propiedades
 
+        private ReglasDeNegocio objReglas = new ReglasDeNegocio();
         private static readonly Random Random = new Random();
         public static int CantidadSectores = 10;
         private const int Lambda = 13;
@@ -50,7 +51,7 @@ namespace tp5.Modelos
 
             return siguienteEvento.TipoEvento;
         }
-        
+
         #endregion
 
         #region Simulaciones
@@ -77,7 +78,7 @@ namespace tp5.Modelos
                 { TipoEvento.LlegadaAuto, SimularLlegadaAuto },
                 { TipoEvento.FinEstacionamiento, SimularFinEstacionamiento },
             };
-            
+
             var proximoTipoEvento = ObtenerProximoTipoEvento();
 
             if (!simulacionPorEvento.ContainsKey(proximoTipoEvento))
@@ -89,7 +90,7 @@ namespace tp5.Modelos
         private Vector SimularLlegadaAuto()
         {
             var randomTipoAuto = Random.NextDouble();
-            var tipoAuto = TipoAutoSegunNumeroAleatorio(RandomTipoAuto);
+            var tipoAuto = TipoAutoSegunNumeroAleatorio(randomTipoAuto);
 
             var randomTiempoRelojSalidaAuto = Random.NextDouble();
             var tiempoRelojSalidaAuto = ProximaLlegadaAuto +
@@ -150,32 +151,44 @@ namespace tp5.Modelos
 
         #region Utilidades
 
-        private static TipoAuto TipoAutoSegunNumeroAleatorio(double numeroAleatorio)
+        private TipoAuto TipoAutoSegunNumeroAleatorio(double numeroAleatorio)
         {
+            var limInf1 = objReglas.Truncar4Decimales(Convert.ToDouble(clsProbabilidades.dtTamanio.Rows[0][3]));
+            var limSup1 = objReglas.Truncar4Decimales(Convert.ToDouble(clsProbabilidades.dtTamanio.Rows[0][4]));
+            var limInf2 = objReglas.Truncar4Decimales(Convert.ToDouble(clsProbabilidades.dtTamanio.Rows[1][3]));
+            var limSup2 = objReglas.Truncar4Decimales(Convert.ToDouble(clsProbabilidades.dtTamanio.Rows[1][4]));
+            
             if (numeroAleatorio < 0)
                 throw new ArgumentOutOfRangeException(nameof(numeroAleatorio));
-
-            if (numeroAleatorio >= 0 && numeroAleatorio < 0.45)
+            
+            if (numeroAleatorio >= limInf1 && numeroAleatorio < limSup1)
                 return TipoAuto.Pequeño;
 
-            if (numeroAleatorio >= 0.45 && numeroAleatorio < 0.70)
+            if (numeroAleatorio >= limInf2 && numeroAleatorio < limSup2)
                 return TipoAuto.Grande;
 
             return TipoAuto.Utilitario;
         }
-        
-        private static int TiempoEstacionadoSegunNumeroAleatorio(double numeroAleatorio)
+
+        private int TiempoEstacionadoSegunNumeroAleatorio(double numeroAleatorio)
         {
+            var limInf1 = objReglas.Truncar4Decimales(Convert.ToDouble(clsProbabilidades.dtTamanio.Rows[0][3]));
+            var limSup1 = objReglas.Truncar4Decimales(Convert.ToDouble(clsProbabilidades.dtTamanio.Rows[0][4]));
+            var limInf2 = objReglas.Truncar4Decimales(Convert.ToDouble(clsProbabilidades.dtTamanio.Rows[1][3]));
+            var limSup2 = objReglas.Truncar4Decimales(Convert.ToDouble(clsProbabilidades.dtTamanio.Rows[1][4]));
+            var limInf3 = objReglas.Truncar4Decimales(Convert.ToDouble(clsProbabilidades.dtTamanio.Rows[2][3]));
+            var limSup3 = objReglas.Truncar4Decimales(Convert.ToDouble(clsProbabilidades.dtTamanio.Rows[2][4]));
+
             if (numeroAleatorio < 0)
                 throw new ArgumentOutOfRangeException(nameof(numeroAleatorio));
 
-            if (numeroAleatorio >= 0 && numeroAleatorio < 0.5)
-                return 60;  
+            if (numeroAleatorio >= limInf1 && numeroAleatorio < limSup1)
+                return 60;
 
-            if (numeroAleatorio >= 0.5 && numeroAleatorio < 0.8)
+            if (numeroAleatorio >= limInf2 && numeroAleatorio < limSup2)
                 return 120;
 
-            if (numeroAleatorio >= 0.8 && numeroAleatorio < 0.95)
+            if (numeroAleatorio >= limInf3 && numeroAleatorio < limSup3)
                 return 180;
 
             return 240;

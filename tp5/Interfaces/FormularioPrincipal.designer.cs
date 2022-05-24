@@ -66,36 +66,40 @@
             this.panel1.Controls.Add(this.cbCantidadIteraciones);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(645, 89);
+            this.panel1.Size = new System.Drawing.Size(968, 137);
             this.panel1.TabIndex = 1;
             // 
             // btnVariables
             // 
             this.btnVariables.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVariables.Location = new System.Drawing.Point(548, 63);
+            this.btnVariables.Location = new System.Drawing.Point(822, 97);
+            this.btnVariables.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnVariables.Name = "btnVariables";
-            this.btnVariables.Size = new System.Drawing.Size(83, 23);
+            this.btnVariables.Size = new System.Drawing.Size(124, 35);
             this.btnVariables.TabIndex = 9;
-            this.btnVariables.Text = "Variables";
+            this.btnVariables.Text = "Probabilidades";
             this.btnVariables.UseVisualStyleBackColor = true;
             this.btnVariables.Click += new System.EventHandler(this.btnVariables_Click);
             // 
             // lblTiempoGrafico
             // 
             this.lblTiempoGrafico.AutoSize = true;
-            this.lblTiempoGrafico.Location = new System.Drawing.Point(12, 66);
+            this.lblTiempoGrafico.Location = new System.Drawing.Point(18, 102);
+            this.lblTiempoGrafico.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTiempoGrafico.Name = "lblTiempoGrafico";
-            this.lblTiempoGrafico.Size = new System.Drawing.Size(42, 13);
+            this.lblTiempoGrafico.Size = new System.Drawing.Size(61, 20);
             this.lblTiempoGrafico.TabIndex = 8;
             this.lblTiempoGrafico.Text = "Tiempo";
             // 
             // labelSimulaciones
             // 
             this.labelSimulaciones.AutoSize = true;
-            this.labelSimulaciones.Location = new System.Drawing.Point(12, 13);
+            this.labelSimulaciones.Location = new System.Drawing.Point(18, 20);
+            this.labelSimulaciones.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSimulaciones.Name = "labelSimulaciones";
-            this.labelSimulaciones.Size = new System.Drawing.Size(69, 13);
+            this.labelSimulaciones.Size = new System.Drawing.Size(103, 20);
             this.labelSimulaciones.TabIndex = 7;
             this.labelSimulaciones.Text = "Simulaciones";
             // 
@@ -106,18 +110,21 @@
             this.gbRango.Controls.Add(this.txtDesde);
             this.gbRango.Controls.Add(this.txtHasta);
             this.gbRango.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gbRango.Location = new System.Drawing.Point(389, 12);
+            this.gbRango.Location = new System.Drawing.Point(584, 18);
+            this.gbRango.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbRango.Name = "gbRango";
-            this.gbRango.Size = new System.Drawing.Size(248, 48);
+            this.gbRango.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbRango.Size = new System.Drawing.Size(372, 74);
             this.gbRango.TabIndex = 6;
             this.gbRango.TabStop = false;
             this.gbRango.Text = "Rango";
             // 
             // btnFiltrar
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(159, 17);
+            this.btnFiltrar.Location = new System.Drawing.Point(238, 26);
+            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(83, 23);
+            this.btnFiltrar.Size = new System.Drawing.Size(124, 35);
             this.btnFiltrar.TabIndex = 8;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
@@ -125,23 +132,26 @@
             // 
             // txtDesde
             // 
-            this.txtDesde.Location = new System.Drawing.Point(6, 19);
+            this.txtDesde.Location = new System.Drawing.Point(9, 29);
+            this.txtDesde.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDesde.Name = "txtDesde";
-            this.txtDesde.Size = new System.Drawing.Size(70, 20);
+            this.txtDesde.Size = new System.Drawing.Size(103, 26);
             this.txtDesde.TabIndex = 4;
             // 
             // txtHasta
             // 
-            this.txtHasta.Location = new System.Drawing.Point(82, 19);
+            this.txtHasta.Location = new System.Drawing.Point(123, 29);
+            this.txtHasta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHasta.Name = "txtHasta";
-            this.txtHasta.Size = new System.Drawing.Size(70, 20);
+            this.txtHasta.Size = new System.Drawing.Size(103, 26);
             this.txtHasta.TabIndex = 5;
             // 
             // btnSimular
             // 
-            this.btnSimular.Location = new System.Drawing.Point(139, 28);
+            this.btnSimular.Location = new System.Drawing.Point(208, 43);
+            this.btnSimular.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSimular.Name = "btnSimular";
-            this.btnSimular.Size = new System.Drawing.Size(83, 23);
+            this.btnSimular.Size = new System.Drawing.Size(124, 35);
             this.btnSimular.TabIndex = 2;
             this.btnSimular.Text = "Simular";
             this.btnSimular.UseVisualStyleBackColor = true;
@@ -150,9 +160,10 @@
             // lblTiempo
             // 
             this.lblTiempo.AutoSize = true;
-            this.lblTiempo.Location = new System.Drawing.Point(12, 53);
+            this.lblTiempo.Location = new System.Drawing.Point(18, 82);
+            this.lblTiempo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTiempo.Name = "lblTiempo";
-            this.lblTiempo.Size = new System.Drawing.Size(42, 13);
+            this.lblTiempo.Size = new System.Drawing.Size(61, 20);
             this.lblTiempo.TabIndex = 3;
             this.lblTiempo.Text = "Tiempo";
             // 
@@ -166,18 +177,20 @@
             "1000",
             "10000",
             "100000"});
-            this.cbCantidadIteraciones.Location = new System.Drawing.Point(12, 29);
+            this.cbCantidadIteraciones.Location = new System.Drawing.Point(18, 45);
+            this.cbCantidadIteraciones.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbCantidadIteraciones.Name = "cbCantidadIteraciones";
-            this.cbCantidadIteraciones.Size = new System.Drawing.Size(121, 21);
+            this.cbCantidadIteraciones.Size = new System.Drawing.Size(180, 28);
             this.cbCantidadIteraciones.TabIndex = 1;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dgvTabla);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 89);
+            this.panel2.Location = new System.Drawing.Point(0, 137);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(645, 244);
+            this.panel2.Size = new System.Drawing.Size(968, 375);
             this.panel2.TabIndex = 2;
             // 
             // dgvTabla
@@ -201,6 +214,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvTabla.ColumnHeadersHeight = 34;
             this.dgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.HighlightText;
@@ -213,6 +227,7 @@
             this.dgvTabla.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTabla.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvTabla.Location = new System.Drawing.Point(0, 0);
+            this.dgvTabla.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvTabla.Name = "dgvTabla";
             this.dgvTabla.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -236,17 +251,18 @@
             this.dgvTabla.RowTemplate.ReadOnly = true;
             this.dgvTabla.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTabla.Size = new System.Drawing.Size(645, 244);
+            this.dgvTabla.Size = new System.Drawing.Size(968, 375);
             this.dgvTabla.TabIndex = 0;
             // 
             // FormularioPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 333);
+            this.ClientSize = new System.Drawing.Size(968, 512);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormularioPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Trabajo Práctico 5 - Simulación";

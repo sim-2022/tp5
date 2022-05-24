@@ -26,13 +26,16 @@ namespace tp5.Interfaces
 
         private void FormularioPrincipal_Load(object sender, EventArgs e)
         {
+            clsProbabilidades objProbabilidades = new clsProbabilidades();
+            objProbabilidades.generarTamanio(); objProbabilidades.generarTiempo();
+
             cbCantidadIteraciones.SelectedIndex = 1;
             CalcularRango(int.Parse(cbCantidadIteraciones.SelectedItem.ToString()));
             BtnSimular_Click(sender, e);
         }
         private void btnVariables_Click(object sender, EventArgs e)
         {
-            frmVariables form = new frmVariables();
+            frmProbabilidades form = new frmProbabilidades();
             form.ShowDialog();
         }
         private void BtnFiltrar_Click(object sender, EventArgs e)
