@@ -65,8 +65,8 @@ namespace tp5.Interfaces
 
         private bool Validar() 
         {
-            decimal totalTiempo = 0;
-            decimal totalTamaño = 0;
+            var totalTiempo = 0m;
+            var totalTamaño = 0m;
 
             if (txtCobro.Text == string.Empty || txtLlegadas.Text == string.Empty)
             {
@@ -76,7 +76,7 @@ namespace tp5.Interfaces
 
             foreach (DataRow row in ClsProbabilidades.DataTableTiempo.Rows)
             {
-                string tiempo = string.Empty;
+                var tiempo = string.Empty;
                 
                 if (row[1].ToString().Contains("."))
                     tiempo = row[1].ToString().Replace(".", ",");
@@ -89,7 +89,7 @@ namespace tp5.Interfaces
 
             foreach (DataRow row in ClsProbabilidades.DataTableTamaño.Rows)
             {
-                string tamaño = string.Empty;
+                var tamaño = string.Empty;
                 
                 if (row[1].ToString().Contains("."))
                     tamaño = row[1].ToString().Replace(".", ",");
