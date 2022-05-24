@@ -16,10 +16,7 @@ namespace tp5.Interfaces
 
         #region Constructor
 
-        public frmProbabilidades()
-        {
-            InitializeComponent();
-        }
+        public frmProbabilidades() => InitializeComponent();
 
         #endregion
 
@@ -43,10 +40,7 @@ namespace tp5.Interfaces
             dgTam.Columns[0].ReadOnly = dgTam.Columns[2].ReadOnly = dgTam.Columns[3].ReadOnly = dgTam.Columns[4].ReadOnly = true;
         }
 
-        private void BtnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void BtnCancelar_Click(object sender, EventArgs e) => Close();
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
