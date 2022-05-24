@@ -9,7 +9,7 @@ namespace tp5.Interfaces
     {
         #region Propiedades    
         
-        private ClsProbabilidades clsProbabilidades = new ClsProbabilidades();
+        private readonly ClsProbabilidades clsProbabilidades = new ClsProbabilidades();
         private string errorMessage = string.Empty;
 
         #endregion
