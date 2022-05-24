@@ -24,12 +24,6 @@ namespace tp5.Interfaces
 
         private void FrmVariables_Load(object sender, EventArgs e)
         {
-            if (ClsProbabilidades.DataTableTamaño == null)
-                ClsProbabilidades.GenerarTamanio();
-
-            if (ClsProbabilidades.DataTableTiempo == null)
-                ClsProbabilidades.GenerarTiempo();
-
             dgTam.DataSource = ClsProbabilidades.DataTableTamaño;
             dgEst.DataSource = ClsProbabilidades.DataTableTiempo;
 

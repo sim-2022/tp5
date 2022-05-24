@@ -26,9 +26,6 @@ namespace tp5.Interfaces
 
         private void FormularioPrincipal_Load(object sender, EventArgs e)
         {
-            ClsProbabilidades objProbabilidades = new ClsProbabilidades();
-            ClsProbabilidades.GenerarTamanio(); ClsProbabilidades.GenerarTiempo();
-
             cbCantidadIteraciones.SelectedIndex = 1;
             CalcularRango(int.Parse(cbCantidadIteraciones.SelectedItem.ToString()));
             BtnSimular_Click(sender, e);

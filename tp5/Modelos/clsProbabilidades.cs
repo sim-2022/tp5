@@ -7,17 +7,29 @@ namespace tp5.Modelos
     {
         #region Propiedades
 
-        public static DataTable DataTableTamaño;
-        public static DataTable DataTableTiempo;
+        private static DataTable _dataTableTamaño;
+        public static DataTable DataTableTamaño
+        {
+            get => _dataTableTamaño ?? (_dataTableTamaño = GenerarTamaño());
+            private set => _dataTableTamaño = value;
+        }
+
+        private static DataTable _dataTableTiempo;
+        public static DataTable DataTableTiempo
+        {
+            get => _dataTableTiempo ?? (_dataTableTiempo = GenerarTiempo());
+            private set => _dataTableTiempo = value;
+        }
+
         public static int IndiceLlegadas = 13;
         public static int TiempoCobro = 2;
 
         #endregion
 
 
-        #region Metodos 
+        #region Metodos
 
-        public static DataTable GenerarTamanio()
+        private static DataTable GenerarTamaño()
         {
             DataTableTamaño = new DataTable();
             DataTableTamaño.Columns.Add("Tamaño");
@@ -33,7 +45,7 @@ namespace tp5.Modelos
             return DataTableTamaño;
         }
 
-        public static DataTable GenerarTiempo()
+        private static DataTable GenerarTiempo()
         {
             DataTableTiempo = new DataTable();
             DataTableTiempo.Columns.Add("Tiempo");
@@ -63,6 +75,7 @@ namespace tp5.Modelos
                 tabla.Rows[i][4] = hasta - 0.01;
                 desde = hasta;
             }
+
             return tabla;
         }
 
