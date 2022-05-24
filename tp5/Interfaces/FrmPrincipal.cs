@@ -33,11 +33,13 @@ namespace tp5.Interfaces
             CalcularRango(int.Parse(cbCantidadIteraciones.SelectedItem.ToString()));
             BtnSimular_Click(sender, e);
         }
+        
         private void btnVariables_Click(object sender, EventArgs e)
         {
             FrmProbabilidades form = new FrmProbabilidades();
             form.ShowDialog();
         }
+        
         private void BtnFiltrar_Click(object sender, EventArgs e)
         {
             try
@@ -106,7 +108,6 @@ namespace tp5.Interfaces
             }
         }
 
-
         private int ObtenerIteraciones()
         {
             const int minimoRepeticiones = 1;
@@ -121,7 +122,7 @@ namespace tp5.Interfaces
             return cantidadIteraciones;
         }
 
-        private void ActualizarMensajeTiempo(Stopwatch timer, Label label, string observacion)
+        private static void ActualizarMensajeTiempo(Stopwatch timer, Label label, string observacion)
         {
             var mensajeTiempoProcesamiento =
                 $"Tiempo {observacion}: {timer.Elapsed.Minutes}' {timer.Elapsed.Seconds}'' {timer.Elapsed.Milliseconds}ms";
@@ -133,6 +134,7 @@ namespace tp5.Interfaces
             txtDesde.Text = 0.ToString();
             txtHasta.Text = cantidad.ToString();
         }
+        
         private void MostrarFilas(int numeroFilaDesde, int numeroFilaHasta)
         {
             var timer = new Stopwatch();
