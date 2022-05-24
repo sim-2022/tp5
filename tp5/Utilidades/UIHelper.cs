@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
 
 using tp5.Modelos;
 using tp5.Modelos.Dominio.Enumeradores;
