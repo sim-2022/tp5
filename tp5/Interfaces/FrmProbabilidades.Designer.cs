@@ -35,8 +35,8 @@ namespace tp5.Interfaces
             this.dgTam = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgEst = new System.Windows.Forms.DataGridView();
-            this.txtLlegadas = new System.Windows.Forms.TextBox();
-            this.txtCobro = new System.Windows.Forms.TextBox();
+            this.txtIndiceLlegadas = new System.Windows.Forms.TextBox();
+            this.txtTiempoCobro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.gbRango.SuspendLayout();
@@ -119,17 +119,17 @@ namespace tp5.Interfaces
             // 
             // txtLlegadas
             // 
-            this.txtLlegadas.Location = new System.Drawing.Point(442, 15);
-            this.txtLlegadas.Name = "txtLlegadas";
-            this.txtLlegadas.Size = new System.Drawing.Size(100, 26);
-            this.txtLlegadas.TabIndex = 13;
+            this.txtIndiceLlegadas.Location = new System.Drawing.Point(442, 15);
+            this.txtIndiceLlegadas.Name = "txtIndiceLlegadas";
+            this.txtIndiceLlegadas.Size = new System.Drawing.Size(100, 26);
+            this.txtIndiceLlegadas.TabIndex = 13;
             // 
             // txtCobro
             // 
-            this.txtCobro.Location = new System.Drawing.Point(695, 15);
-            this.txtCobro.Name = "txtCobro";
-            this.txtCobro.Size = new System.Drawing.Size(100, 26);
-            this.txtCobro.TabIndex = 14;
+            this.txtTiempoCobro.Location = new System.Drawing.Point(695, 15);
+            this.txtTiempoCobro.Name = "txtTiempoCobro";
+            this.txtTiempoCobro.Size = new System.Drawing.Size(100, 26);
+            this.txtTiempoCobro.TabIndex = 14;
             // 
             // label1
             // 
@@ -156,8 +156,8 @@ namespace tp5.Interfaces
             this.ClientSize = new System.Drawing.Size(1130, 406);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtCobro);
-            this.Controls.Add(this.txtLlegadas);
+            this.Controls.Add(this.txtTiempoCobro);
+            this.Controls.Add(this.txtIndiceLlegadas);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbRango);
             this.Controls.Add(this.btnGuardar);
@@ -184,8 +184,8 @@ namespace tp5.Interfaces
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgTam;
         private System.Windows.Forms.DataGridView dgEst;
-        private System.Windows.Forms.TextBox txtLlegadas;
-        private System.Windows.Forms.TextBox txtCobro;
+        private System.Windows.Forms.TextBox txtIndiceLlegadas;
+        private System.Windows.Forms.TextBox txtTiempoCobro;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }
