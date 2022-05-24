@@ -6,14 +6,17 @@ namespace tp5.Modelos
     public class ClsProbabilidades
     {
         #region Propiedades
+
         public static DataTable DataTableTamaño;
         public static DataTable DataTableTiempo;
         public static int IndiceLlegadas = 13;
         public static int TiempoCobro = 2;
+
         #endregion
 
 
         #region Metodos 
+
         public DataTable GenerarTamanio()
         {
             DataTableTamaño = new DataTable();
@@ -29,6 +32,7 @@ namespace tp5.Modelos
 
             return DataTableTamaño;
         }
+
         public DataTable GenerarTiempo()
         {
             DataTableTiempo = new DataTable();
@@ -45,6 +49,7 @@ namespace tp5.Modelos
 
             return DataTableTiempo;
         }
+
         public DataTable CalcularIntervalos(DataTable tabla)
         {
             var acumulado = .0;
@@ -60,6 +65,7 @@ namespace tp5.Modelos
             }
             return tabla;
         }
+
         #endregion
     }
 }
