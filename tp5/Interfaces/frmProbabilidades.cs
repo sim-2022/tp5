@@ -9,7 +9,7 @@ namespace tp5.Interfaces
     {
         #region Propiedades    
         
-        private  ClsProbabilidades objVariables = new ClsProbabilidades();
+        private ClsProbabilidades clsProbabilidades = new ClsProbabilidades();
         private string errorMessage = string.Empty;
 
         #endregion
@@ -28,9 +28,9 @@ namespace tp5.Interfaces
         private void frmVariables_Load(object sender, EventArgs e)
         {
             if (ClsProbabilidades.DataTableTamaño == null)
-                objVariables.GenerarTamanio();
+                clsProbabilidades.GenerarTamanio();
             if (ClsProbabilidades.DataTableTiempo == null)
-                objVariables.GenerarTiempo();
+                clsProbabilidades.GenerarTiempo();
             
             dgTam.DataSource = ClsProbabilidades.DataTableTamaño;
             dgEst.DataSource = ClsProbabilidades.DataTableTiempo;
@@ -50,8 +50,8 @@ namespace tp5.Interfaces
         {
             if (Validar())
             {
-                objVariables.CalcularIntervalos(ClsProbabilidades.DataTableTamaño);
-                objVariables.CalcularIntervalos(ClsProbabilidades.DataTableTiempo);
+                clsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTamaño);
+                clsProbabilidades.CalcularIntervalos(ClsProbabilidades.DataTableTiempo);
                 ClsProbabilidades.IndiceLlegadas = Convert.ToInt32(txtLlegadas.Text);
                 ClsProbabilidades.TiempoCobro = Convert.ToInt32(txtCobro.Text);
                 MessageBox.Show("Probabilidades actualizadas correctamente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
