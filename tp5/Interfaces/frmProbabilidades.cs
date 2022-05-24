@@ -25,7 +25,7 @@ namespace tp5.Interfaces
 
         #region Eventos
 
-        private void frmVariables_Load(object sender, EventArgs e)
+        private void FrmVariables_Load(object sender, EventArgs e)
         {
             if (ClsProbabilidades.DataTableTamaño == null)
                 clsProbabilidades.GenerarTamanio();
@@ -43,12 +43,12 @@ namespace tp5.Interfaces
             dgTam.Columns[0].ReadOnly = dgTam.Columns[2].ReadOnly = dgTam.Columns[3].ReadOnly = dgTam.Columns[4].ReadOnly = true;
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void BtnGuardar_Click(object sender, EventArgs e)
         {
             if (Validar())
             {

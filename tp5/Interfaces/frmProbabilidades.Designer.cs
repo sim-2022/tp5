@@ -55,7 +55,7 @@ namespace tp5.Interfaces
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -67,7 +67,7 @@ namespace tp5.Interfaces
             this.btnGuardar.TabIndex = 10;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.btnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // gbRango
             // 
@@ -166,7 +166,7 @@ namespace tp5.Interfaces
             this.Name = "frmProbabilidades";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmVariables";
-            this.Load += new System.EventHandler(this.frmVariables_Load);
+            this.Load += new System.EventHandler(this.FrmVariables_Load);
             this.gbRango.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgTam)).EndInit();
             this.groupBox1.ResumeLayout(false);
