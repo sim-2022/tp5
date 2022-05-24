@@ -49,7 +49,7 @@ namespace tp5.Interfaces
             }
             catch (Exception exception)
             {
-                MostrarExcepcion(exception);
+                UiHelper.MostrarExcepcion(exception);
             }
         }
 
@@ -104,7 +104,7 @@ namespace tp5.Interfaces
             }
             catch (Exception ex)
             {
-                MostrarExcepcion(ex);
+                UiHelper.MostrarExcepcion(ex);
             }
         }
 
@@ -150,16 +150,7 @@ namespace tp5.Interfaces
             ActualizarMensajeTiempo(timer, lblTiempoGrafico, "Procesamiento de Gráficos");
 
         }
-
-        private static void MostrarExcepcion(Exception ex)
-        {
-            MessageBox.Show(
-                text: ex.Message,
-                caption: @"Error",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-        }
-
+        
         #endregion
     }
 }

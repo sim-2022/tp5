@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using tp5.Modelos;
+using tp5.Utilidades;
 
 namespace tp5.Interfaces
 {
@@ -51,12 +52,12 @@ namespace tp5.Interfaces
 
                 ClsProbabilidades.IndiceLlegadas = Convert.ToInt32(txtLlegadas.Text);
                 ClsProbabilidades.TiempoCobro = Convert.ToInt32(txtCobro.Text);
-
-                MessageBox.Show("Probabilidades actualizadas correctamente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                UiHelper.MostrarMensaje(mensaje:"Probabilidades actualizadas correctamente", "Atención");
                 Close();
             }
             else
-                MessageBox.Show(_errorMessage, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UiHelper.MostrarMensaje(_errorMessage, "Atención");
         }
 
         #endregion

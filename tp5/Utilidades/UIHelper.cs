@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-
+using System.Windows.Forms;
 using tp5.Modelos;
 using tp5.Modelos.Dominio.Enumeradores;
 
@@ -64,6 +64,20 @@ namespace tp5.Utilidades
             }
 
             tabla.Rows.Add(fila);
+        }
+
+        public static void MostrarMensaje(string mensaje, string titulo)
+        {
+            MessageBox.Show(
+                text: mensaje,
+                caption: titulo,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+
+        public static void MostrarExcepcion(Exception excepcion)
+        {
+            MostrarMensaje(mensaje: excepcion.Message, titulo: "Error");
         }
     }
 }
