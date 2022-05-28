@@ -19,11 +19,15 @@ namespace tp5.Utilidades
                 new DataColumn("Fila", typeof(int)),
                 new DataColumn("Evento"),
                 new DataColumn("Reloj (Minutos)"),
+                new DataColumn("Random Llegada Auto"),
                 new DataColumn("Tiempo Llegada Auto"),
                 new DataColumn("Proxima Llegada Auto"),
                 new DataColumn("Random Tipo Auto"),
                 new DataColumn("Tipo Auto"),
                 new DataColumn("Random Tiempo Salida Auto"),
+                new DataColumn("Estado Cobro"),
+                new DataColumn("Fin Cobro"),
+                new DataColumn("Cola Cobro"),
                 //new DataColumn("Cantidad Sectores Ocupados"),
             };
 
@@ -46,9 +50,10 @@ namespace tp5.Utilidades
             var fila = tabla.NewRow();
             fila["Fila"] = numeroFila;
             fila["Evento"] = vector.Evento.ObtenerDescripcion();
-            fila["Reloj (Minutos)"] = vector.Reloj;
-            fila["Tiempo Llegada Auto"] = vector.TiempoLlegadaAuto;
-            fila["Proxima Llegada Auto"] = vector.ProximaLlegadaAuto;
+            fila["Reloj (Minutos)"] = Redondear(vector.Reloj);
+            fila["Random Llegada Auto"] = Redondear(vector.RandomLlegadaAuto);
+            fila["Tiempo Llegada Auto"] = Redondear(vector.TiempoLlegadaAuto);
+            fila["Proxima Llegada Auto"] = Redondear(vector.ProximaLlegadaAuto);
             fila["Random Tipo Auto"] = Redondear(vector.RandomTipoAuto);
             fila["Tipo Auto"] = vector.TipoAuto.ObtenerDescripcion();
             fila["Random Tiempo Salida Auto"] = Redondear(vector.RandomTiempoRelojSalidaAuto);
@@ -57,7 +62,7 @@ namespace tp5.Utilidades
             {
                 fila[$"Auto [Sector {sector.Id}]"] = sector.TipoAuto?.ObtenerDescripcion() ?? string.Empty;
                 fila[$"Estado [Sector {sector.Id}]"] = sector.EstadoSector is EstadoSector.Ocupado ? sector.Estado : string.Empty;
-                fila[$"Salida [Sector {sector.Id}]"] = sector.TipoAuto is null ? string.Empty : sector.Salida.ToString();
+                fila[$"Salida [Sector {sector.Id}]"] = sector.TipoAuto is null ? string.Empty : Redondear(Convert.ToDouble(sector.Salida)).ToString();
             }
 
             tabla.Rows.Add(fila);

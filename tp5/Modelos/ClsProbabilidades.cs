@@ -37,9 +37,9 @@ namespace tp5.Modelos
             DataTableTamaño.Columns.Add("LimInf");
             DataTableTamaño.Columns.Add("LimSup");
 
-            DataTableTamaño.Rows.Add("Pequeños", 0.45, 0.45, 0.00, 0.44);
-            DataTableTamaño.Rows.Add("Grandes", 0.25, 0.70, 0.45, 0.69);
-            DataTableTamaño.Rows.Add("Utilitarios", 0.30, 1, 0.70, 0.99);
+            DataTableTamaño.Rows.Add("Pequeños", 0.45, 0.45, 0.00, 0.45);
+            DataTableTamaño.Rows.Add("Grandes", 0.25, 0.70, 0.45, 0.70);
+            DataTableTamaño.Rows.Add("Utilitarios", 0.30, 1, 0.70, 1);
 
             return DataTableTamaño;
         }
@@ -53,10 +53,10 @@ namespace tp5.Modelos
             DataTableTiempo.Columns.Add("LimInf");
             DataTableTiempo.Columns.Add("LimSup");
 
-            DataTableTiempo.Rows.Add(1, 0.50, 0.50, 0.00, 0.49);
-            DataTableTiempo.Rows.Add(2, 0.30, 0.80, 0.50, 0.79);
-            DataTableTiempo.Rows.Add(3, 0.15, 0.95, 0.80, 0.94);
-            DataTableTiempo.Rows.Add(4, 0.05, 1, 0.95, 0.99);
+            DataTableTiempo.Rows.Add(1, 0.50, 0.50, 0.00, 0.50);
+            DataTableTiempo.Rows.Add(2, 0.30, 0.80, 0.50, 0.80);
+            DataTableTiempo.Rows.Add(3, 0.15, 0.95, 0.80, 0.95);
+            DataTableTiempo.Rows.Add(4, 0.05, 1, 0.95, 1);
 
             return DataTableTiempo;
         }

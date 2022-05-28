@@ -7,7 +7,7 @@ namespace tp5.Modelos.Dominio
 {
     public class PlayaEstacionamiento
     {
-        public List<Sector> Sectores;
+        public List<Sector> Sectores;        
         private int CantidadSectores { get; set; }
 
         public PlayaEstacionamiento(int cantidadSectores)
@@ -31,7 +31,7 @@ namespace tp5.Modelos.Dominio
             };
         }
 
-        public void EstacionarAuto(int tiempoRelojSalida, TipoAuto auto)
+        public void EstacionarAuto(double tiempoRelojSalida, TipoAuto auto)
         {
             var sectorLibre = Sectores.First(sector => sector.EstadoSector is EstadoSector.Libre);
             Sectores.Remove(sectorLibre);

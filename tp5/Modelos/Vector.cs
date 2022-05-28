@@ -13,12 +13,13 @@ namespace tp5.Modelos
         private readonly ReglasDeNegocio _reglasDeNegocio = new ReglasDeNegocio();
         private static readonly Random Random = new Random();
         public static int CantidadSectores = 10;
-        private const int Lambda = 13;
+        private const int Lambda = 13;        
 
         public TipoEvento Evento { get; private set; }
-        public int Reloj { get; private set; }
-        public int TiempoLlegadaAuto { get; private set; }
-        public int ProximaLlegadaAuto { get; private set; }
+        public double Reloj { get; private set; }
+        public double RandomLlegadaAuto { get; private set; }
+        public double TiempoLlegadaAuto { get; private set; }
+        public double ProximaLlegadaAuto { get; private set; }
         public double RandomTipoAuto { get; private set; }
         public double RandomTiempoRelojSalidaAuto { get; private set; }
         public TipoAuto TipoAuto { get; private set; }
@@ -32,7 +33,7 @@ namespace tp5.Modelos
 
         private TipoEvento ObtenerProximoTipoEvento()
         {
-            var listaProximosEventos = new List<(TipoEvento TipoEvento, int Tiempo)>()
+            var listaProximosEventos = new List<(TipoEvento TipoEvento, double Tiempo)>()
             {
                 (TipoEvento.LlegadaAuto, ProximaLlegadaAuto),
             };
@@ -42,7 +43,7 @@ namespace tp5.Modelos
                 var proximoSectorPorLiberar = PlayaEstacionamiento.ProximoSectorPorDesocupar();
                 var eventoFinEstacionamiento =
                     (TipoEvento.FinEstacionamiento, TiempoRelojSalida: proximoSectorPorLiberar.Salida);
-                listaProximosEventos.Add(eventoFinEstacionamiento);
+                listaProximosEventos.Add(eventoFinEstacionamiento);                
             }
 
             var siguienteEvento = listaProximosEventos
@@ -58,9 +59,10 @@ namespace tp5.Modelos
 
         public static Vector SimularInicio()
         {
+            ReglasDeNegocio _reglasDeNegocio = new ReglasDeNegocio();
             var random = new Random();
             const int tiempoInicio = 0;
-            var tiempoLlegadaAuto = random.Next(1, Lambda);
+            var tiempoLlegadaAuto = _reglasDeNegocio.GenerarVariableExpNeg(_reglasDeNegocio.GenerarRandom(), Lambda);
             return new Vector
             {
                 Reloj = tiempoInicio,
@@ -76,7 +78,7 @@ namespace tp5.Modelos
             var simulacionPorEvento = new Dictionary<TipoEvento, Func<Vector>>
             {
                 { TipoEvento.LlegadaAuto, SimularLlegadaAuto },
-                { TipoEvento.FinEstacionamiento, SimularFinEstacionamiento },
+                { TipoEvento.FinEstacionamiento, SimularFinEstacionamiento },              
             };
 
             var proximoTipoEvento = ObtenerProximoTipoEvento();
@@ -89,17 +91,17 @@ namespace tp5.Modelos
 
         private Vector SimularLlegadaAuto()
         {
-            var randomTipoAuto = Random.NextDouble();
+            var randomTipoAuto = _reglasDeNegocio.GenerarRandom();
             var tipoAuto = TipoAutoSegunNumeroAleatorio(randomTipoAuto);
 
-            var randomTiempoRelojSalidaAuto = Random.NextDouble();
+            var randomTiempoRelojSalidaAuto = _reglasDeNegocio.GenerarRandom();
             var tiempoRelojSalidaAuto = ProximaLlegadaAuto +
                                         TiempoEstacionadoSegunNumeroAleatorio(randomTiempoRelojSalidaAuto);
 
             var cantidadAutosSinEntrar = CantidadAutosSinEntrar;
 
-
-            var tiempoLlegadaAuto = Random.Next(1, Lambda);
+            var randomLlegadaAuto = _reglasDeNegocio.GenerarRandom();
+            var tiempoLlegadaAuto = _reglasDeNegocio.GenerarVariableExpNeg(randomLlegadaAuto, Lambda);
             var proximaLlegadaAuto = ProximaLlegadaAuto + tiempoLlegadaAuto;
 
             var playaEstacionamiento = PlayaEstacionamiento.Clonar();
@@ -112,6 +114,7 @@ namespace tp5.Modelos
             {
                 Reloj = ProximaLlegadaAuto,
                 Evento = TipoEvento.LlegadaAuto,
+                RandomLlegadaAuto = randomLlegadaAuto,
                 TiempoLlegadaAuto = tiempoLlegadaAuto,
                 ProximaLlegadaAuto = proximaLlegadaAuto,
                 RandomTipoAuto = randomTipoAuto,
@@ -146,7 +149,7 @@ namespace tp5.Modelos
             };
             return nuevoVector;
         }
-
+        
         #endregion
 
         #region Utilidades

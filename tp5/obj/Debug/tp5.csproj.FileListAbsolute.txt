@@ -12,13 +12,11 @@ C:\Users\agush\Desktop\tp5\tp5\bin\Debug\tp5.exe.config
 C:\Users\agush\Desktop\tp5\tp5\bin\Debug\tp5.exe
 C:\Users\agush\Desktop\tp5\tp5\bin\Debug\tp5.pdb
 C:\Users\agush\Desktop\tp5\tp5\obj\Debug\tp5.csproj.AssemblyReference.cache
-C:\Users\agush\Desktop\tp5\tp5\obj\Debug\tp5.Interfaces.FormularioPrincipal.resources
 C:\Users\agush\Desktop\tp5\tp5\obj\Debug\tp5.Properties.Resources.resources
 C:\Users\agush\Desktop\tp5\tp5\obj\Debug\tp5.csproj.GenerateResource.cache
 C:\Users\agush\Desktop\tp5\tp5\obj\Debug\tp5.csproj.CoreCompileInputs.cache
 C:\Users\agush\Desktop\tp5\tp5\obj\Debug\tp5.exe
 C:\Users\agush\Desktop\tp5\tp5\obj\Debug\tp5.pdb
-C:\Users\agush\Desktop\tp5\tp5\obj\Debug\tp5.Interfaces.frmVariables.resources
 C:\Users\agush\OneDrive\Escritorio\tp5\tp5\bin\Debug\tp5.exe.config
 C:\Users\agush\OneDrive\Escritorio\tp5\tp5\bin\Debug\tp5.exe
 C:\Users\agush\OneDrive\Escritorio\tp5\tp5\bin\Debug\tp5.pdb
@@ -32,3 +30,5 @@ C:\Users\agush\OneDrive\Escritorio\tp5\tp5\obj\Debug\tp5.pdb
 C:\Users\agush\OneDrive\Escritorio\tp5\tp5\obj\Debug\tp5.Interfaces.frmProbabilidades.resources
 C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\obj\Debug\tp5.Interfaces.frmProbabilidades.resources
 C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\obj\Debug\tp5.Interfaces.FrmPrincipal.resources
+C:\Users\agush\Desktop\tp5\tp5\obj\Debug\tp5.Interfaces.FrmPrincipal.resources
+C:\Users\agush\Desktop\tp5\tp5\obj\Debug\tp5.Interfaces.FrmProbabilidades.resources
