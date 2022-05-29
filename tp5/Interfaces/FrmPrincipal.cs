@@ -78,6 +78,12 @@ namespace tp5.Interfaces
 
         private void Simular()
         {
+            if (Vector.LstCobro.Any())
+                Vector.LstCobro.Clear();
+
+            Vector.Lambda = ClsProbabilidades.IndiceLlegadas;
+            Vector.TiempoCobro = ClsProbabilidades.TiempoCobro;
+
             ListaEstadosVector.Clear();
             var timer = new Stopwatch();
             timer.Start();

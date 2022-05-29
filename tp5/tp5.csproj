@@ -59,6 +59,7 @@
       <DependentUpon>FrmProbabilidades.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\ClsProbabilidades.cs" />
+    <Compile Include="Modelos\Cobro.cs" />
     <Compile Include="Modelos\Dominio\Enumeradores\EstadoSector.cs" />
     <Compile Include="Modelos\Dominio\Enumeradores\TipoAuto.cs" />
     <Compile Include="Modelos\Dominio\Enumeradores\TipoEvento.cs" />

@@ -57,6 +57,9 @@ namespace tp5.Utilidades
             fila["Random Tipo Auto"] = Redondear(vector.RandomTipoAuto);
             fila["Tipo Auto"] = vector.TipoAuto.ObtenerDescripcion();
             fila["Random Tiempo Salida Auto"] = Redondear(vector.RandomTiempoRelojSalidaAuto);
+            fila["Estado Cobro"] = vector.EstadoCobro;
+            fila["Fin Cobro"] = Redondear(vector.FinCobro);
+            fila["Cola Cobro"] = vector.ColaCobro;
 
             foreach (var sector in vector.PlayaEstacionamiento.Sectores)
             {
