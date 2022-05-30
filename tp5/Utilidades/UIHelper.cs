@@ -27,7 +27,7 @@ namespace tp5.Utilidades
                 new DataColumn("Random Tiempo Salida Auto"),
                 new DataColumn("Estado Cobro"),
                 new DataColumn("Fin Cobro"),
-                new DataColumn("Cola Cobro"),
+                new DataColumn("Cola Cobro"),               
                 //new DataColumn("Cantidad Sectores Ocupados"),
             };
 
@@ -39,7 +39,7 @@ namespace tp5.Utilidades
             }
 
             columnas.Add(new DataColumn("Cantidad Autos Sin Entrar"));
-
+            columnas.Add(new DataColumn("Ganancia Acumulada"));
             tabla.Columns.AddRange(columnas.ToArray());
 
             return tabla;
@@ -71,6 +71,7 @@ namespace tp5.Utilidades
             tabla.Rows.Add(fila);
 
             fila["Cantidad Autos Sin Entrar"] = vector.CantidadAutosSinEntrar;
+            fila["Ganancia Acumulada"] = Redondear(vector.Ganancia);
             //fila["Cantidad Sectores Ocupados"] = vector.CantidadSectoresOcupados;
         }
 

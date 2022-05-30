@@ -83,6 +83,7 @@ namespace tp5.Interfaces
 
             Vector.Lambda = ClsProbabilidades.IndiceLlegadas;
             Vector.TiempoCobro = ClsProbabilidades.TiempoCobro;
+            Vector.GananciaAcumulada = 0;
 
             ListaEstadosVector.Clear();
             var timer = new Stopwatch();

@@ -14,6 +14,7 @@ namespace tp5.Modelos
         public static int CantidadSectores = 10;
         public static int Lambda;
         public static int TiempoCobro;
+        public static int GananciaAcumulada;
         public static List<Cobro> LstCobro = new List<Cobro>();                
         public double finCobro;
 
@@ -31,6 +32,7 @@ namespace tp5.Modelos
         public string EstadoCobro { get; private set; }
         public int ColaCobro { get; private set; }        
         public double FinCobro { get; private set; }
+        public int Ganancia { get; private set; }
         #endregion
 
         #region Comportamiento
@@ -108,8 +110,8 @@ namespace tp5.Modelos
             var tipoAuto = TipoAutoSegunNumeroAleatorio(randomTipoAuto);
 
             var randomTiempoRelojSalidaAuto = _reglasDeNegocio.GenerarRandom();
-            var tiempoRelojSalidaAuto = ProximaLlegadaAuto +
-                                        TiempoEstacionadoSegunNumeroAleatorio(randomTiempoRelojSalidaAuto);
+            var tiempoPermanencia = TiempoEstacionadoSegunNumeroAleatorio(randomTiempoRelojSalidaAuto);
+            var tiempoRelojSalidaAuto = ProximaLlegadaAuto + tiempoPermanencia;
 
             var cantidadAutosSinEntrar = CantidadAutosSinEntrar;
 
@@ -119,7 +121,7 @@ namespace tp5.Modelos
 
             var playaEstacionamiento = PlayaEstacionamiento.Clonar();
             if (playaEstacionamiento.HayLugar())
-                playaEstacionamiento.EstacionarAuto(tiempoRelojSalidaAuto, tipoAuto);
+                playaEstacionamiento.EstacionarAuto(tiempoRelojSalidaAuto, tipoAuto,tiempoPermanencia);
             else
                 cantidadAutosSinEntrar += 1;
 
@@ -141,6 +143,7 @@ namespace tp5.Modelos
                 EstadoCobro = playaEstacionamiento.GetEstadoCobro(tipoEvento),
                 ColaCobro = playaEstacionamiento.CalcularColaCobro(),
                 FinCobro = playaEstacionamiento.CalcularFinCobro(TiempoCobro),
+                Ganancia = GananciaAcumulada,
             };
             return nuevoVector;
         }
@@ -149,8 +152,10 @@ namespace tp5.Modelos
         {            
             var sectorPorDesocupar = PlayaEstacionamiento.ProximoSectorPorDesocupar();
             var tiempoSalida = sectorPorDesocupar.Salida;
+            var tiempoPermanencia = sectorPorDesocupar.Tiempo/60; //Se divide para obtener la cantidad de horas en vez de minutos
             var playaEstacionamiento = PlayaEstacionamiento.Clonar();
             var tipoEvento = TipoEvento.FinEstacionamiento;
+            GananciaAcumulada += playaEstacionamiento.CalcularGanancia(TipoAuto, tiempoPermanencia);
             playaEstacionamiento.DesocuparSector(sectorPorDesocupar.Id);
             Cobro _cobro = new Cobro(tiempoSalida, tiempoSalida, 0);
             LstCobro.Add(_cobro);
@@ -170,7 +175,8 @@ namespace tp5.Modelos
                 EstadoCobro = playaEstacionamiento.GetEstadoCobro(tipoEvento),
                 ColaCobro = playaEstacionamiento.CalcularColaCobro(),
                 FinCobro = playaEstacionamiento.CalcularFinCobro(TiempoCobro),
-            };            
+                Ganancia = GananciaAcumulada,
+        };            
 
             return nuevoVector;
         }
@@ -194,14 +200,14 @@ namespace tp5.Modelos
                 CantidadSectoresOcupados = playaEstacionamiento.ContarSectoresOcupados(),
                 EstadoCobro = playaEstacionamiento.GetEstadoCobro(tipoEvento),
                 ColaCobro = playaEstacionamiento.CalcularColaCobro(),
-                FinCobro = playaEstacionamiento.CalcularFinCobro(TiempoCobro),
-            };
+                Ganancia = GananciaAcumulada,
+        };
 
             if (LstCobro.Count > 1)
                 PlayaEstacionamiento.ActualizarFinCobro();
             else
-                LstCobro.RemoveAt(0);
-
+                LstCobro.RemoveAt(0); //Elimina de la lista el auto que ya se cobro
+            nuevoVector.FinCobro = playaEstacionamiento.CalcularFinCobro(TiempoCobro, finCobro);
             nuevoVector.ColaCobro = playaEstacionamiento.CalcularColaCobro();
             return nuevoVector;
         }

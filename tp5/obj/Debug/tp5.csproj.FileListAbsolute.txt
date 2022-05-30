@@ -32,3 +32,14 @@ C:\Users\Juan Cruz\Desktop\facultad\tps-sim\tp5\tp5\obj\Debug\tp5.Interfaces.Frm
 C:\Users\agush\Desktop\tp5\tp5\obj\Debug\tp5.Interfaces.FrmPrincipal.resources
 C:\Users\agush\Desktop\tp5\tp5\obj\Debug\tp5.Interfaces.FrmProbabilidades.resources
 C:\Users\agush\OneDrive\Escritorio\tp5\tp5\obj\Debug\tp5.Interfaces.FrmPrincipal.resources
+D:\UTN\2022\Simulacion\Practico\TPs\tp5\tp5\bin\Debug\tp5.exe.config
+D:\UTN\2022\Simulacion\Practico\TPs\tp5\tp5\bin\Debug\tp5.exe
+D:\UTN\2022\Simulacion\Practico\TPs\tp5\tp5\bin\Debug\tp5.pdb
+D:\UTN\2022\Simulacion\Practico\TPs\tp5\tp5\obj\Debug\tp5.csproj.AssemblyReference.cache
+D:\UTN\2022\Simulacion\Practico\TPs\tp5\tp5\obj\Debug\tp5.Interfaces.FrmPrincipal.resources
+D:\UTN\2022\Simulacion\Practico\TPs\tp5\tp5\obj\Debug\tp5.Interfaces.FrmProbabilidades.resources
+D:\UTN\2022\Simulacion\Practico\TPs\tp5\tp5\obj\Debug\tp5.Properties.Resources.resources
+D:\UTN\2022\Simulacion\Practico\TPs\tp5\tp5\obj\Debug\tp5.csproj.GenerateResource.cache
+D:\UTN\2022\Simulacion\Practico\TPs\tp5\tp5\obj\Debug\tp5.csproj.CoreCompileInputs.cache
+D:\UTN\2022\Simulacion\Practico\TPs\tp5\tp5\obj\Debug\tp5.exe
+D:\UTN\2022\Simulacion\Practico\TPs\tp5\tp5\obj\Debug\tp5.pdb
