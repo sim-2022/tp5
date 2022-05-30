@@ -17,5 +17,7 @@ namespace tp5.Modelos
             InicioCobro = inicioCobro;
             FinCobro = finCobro;
         }
+
+        public void AgregarCobro() => Vector.LstCobro.Add(this);     
     }
 }

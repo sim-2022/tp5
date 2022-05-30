@@ -152,13 +152,13 @@ namespace tp5.Modelos
         {            
             var sectorPorDesocupar = PlayaEstacionamiento.ProximoSectorPorDesocupar();
             var tiempoSalida = sectorPorDesocupar.Salida;
-            var tiempoPermanencia = sectorPorDesocupar.Tiempo/60; //Se divide para obtener la cantidad de horas en vez de minutos
+            var tiempoPermanencia = sectorPorDesocupar.Tiempo/60; //Se divide para obtener la cantidad de horas en vez de minutos que un auto permanecio en la playa
             var playaEstacionamiento = PlayaEstacionamiento.Clonar();
             var tipoEvento = TipoEvento.FinEstacionamiento;
             GananciaAcumulada += playaEstacionamiento.CalcularGanancia(TipoAuto, tiempoPermanencia);
             playaEstacionamiento.DesocuparSector(sectorPorDesocupar.Id);
             Cobro _cobro = new Cobro(tiempoSalida, tiempoSalida, 0);
-            LstCobro.Add(_cobro);
+            _cobro.AgregarCobro();
 
             var nuevoVector = new Vector
             {
