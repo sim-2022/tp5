@@ -29,19 +29,20 @@ namespace tp5.Utilidades
                 new DataColumn("Fin Cobro"),
                 new DataColumn("Cola Cobro"),               
                 //new DataColumn("Cantidad Sectores Ocupados"),
-            };
-
-            for (var i = 1; i <= Vector.CantidadSectores; i++)
-            {
-                columnas.Add(new DataColumn($"Estado [Sector {i}]"));
-                columnas.Add(new DataColumn($"Auto [Sector {i}]"));
-                columnas.Add(new DataColumn($"Salida [Sector {i}]"));
-            }
+            };           
 
             columnas.Add(new DataColumn("Cantidad Autos Sin Entrar"));
             columnas.Add(new DataColumn("Ganancia Acumulada"));
-            tabla.Columns.AddRange(columnas.ToArray());
+            columnas.Add(new DataColumn("Porcentaje de Ocupacion"));
+            for (var i = 0; i <= Vector.LstAutos.Count; i++)
+            {
+                columnas.Add(new DataColumn($"Tipo [Auto {i}]"));
+                columnas.Add(new DataColumn($"Permanencia [Auto {i}]"));
+                columnas.Add(new DataColumn($"Fin Estacionamiento [Auto {i}]"));
+            }
 
+
+            tabla.Columns.AddRange(columnas.ToArray());
             return tabla;
         }
 
@@ -61,17 +62,18 @@ namespace tp5.Utilidades
             fila["Fin Cobro"] = Redondear(vector.FinCobro);
             fila["Cola Cobro"] = vector.ColaCobro;
 
-            foreach (var sector in vector.PlayaEstacionamiento.Sectores)
+            foreach (var auto in Vector.LstAutos)
             {
-                fila[$"Auto [Sector {sector.Id}]"] = sector.TipoAuto?.ObtenerDescripcion() ?? string.Empty;
-                fila[$"Estado [Sector {sector.Id}]"] = sector.EstadoSector is EstadoSector.Ocupado ? sector.Estado : string.Empty;
-                fila[$"Salida [Sector {sector.Id}]"] = sector.TipoAuto is null ? string.Empty : Redondear(Convert.ToDouble(sector.Salida)).ToString();
+                fila[$"Tipo [Auto {auto.Id}]"] = auto.Tipo.ToString();
+                fila[$"Permanencia [Auto {auto.Id}]"] = Redondear(auto.TiempoPermanencia).ToString();
+                fila[$"Fin Estacionamiento [Auto {auto.Id}]"] = Redondear(auto.FinEstacionamiento).ToString();
             }
 
             tabla.Rows.Add(fila);
 
             fila["Cantidad Autos Sin Entrar"] = vector.CantidadAutosSinEntrar;
             fila["Ganancia Acumulada"] = Redondear(vector.Ganancia);
+            fila["Porcentaje de Ocupacion"] = Redondear(vector.Porcentaje);
             //fila["Cantidad Sectores Ocupados"] = vector.CantidadSectoresOcupados;
         }
 

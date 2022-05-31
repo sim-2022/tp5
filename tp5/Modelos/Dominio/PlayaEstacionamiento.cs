@@ -7,15 +7,15 @@ namespace tp5.Modelos.Dominio
 {
     public class PlayaEstacionamiento
     {
-        public List<Sector> Sectores;        
+        public Dictionary<int, EstadoSector> Sectores;    
         private int CantidadSectores { get; set; }
+        public static int IdAuto;
 
         public PlayaEstacionamiento(int cantidadSectores)
         {
             CantidadSectores = cantidadSectores;
-            Sectores = new List<Sector>();
-            for (var i = 1; i <= CantidadSectores; i++)
-                Sectores.Add(Sector.CrearSectorLibre(i));
+            var objSector = new Sector(CantidadSectores);
+            Sectores = objSector.Sectores;
         }
 
         private PlayaEstacionamiento()
@@ -27,32 +27,37 @@ namespace tp5.Modelos.Dominio
             return new PlayaEstacionamiento
             {
                 CantidadSectores = CantidadSectores,
-                Sectores = Sectores.ToList()
+                Sectores = Sectores
             };
         }
 
-        public void EstacionarAuto(double tiempoRelojSalida, TipoAuto auto, int tiempoPermanencia)
-        {
-            var sectorLibre = Sectores.First(sector => sector.EstadoSector is EstadoSector.Libre);
-            Sectores.Remove(sectorLibre);
-            Sectores.Add(Sector.CrearSectorOcupado(sectorLibre.Id, auto, tiempoRelojSalida, tiempoPermanencia));
+        public void EstacionarAuto(int permanencia, TipoAuto tipoAuto, double fin)
+        {            
+            var sectorLibre = Sectores.First(sector => sector.Value is EstadoSector.Libre);
+            Sectores[sectorLibre.Key] = EstadoSector.Ocupado;
+            Auto objAuto = new Auto(IdAuto ,tipoAuto, permanencia, fin, sectorLibre.Key);
+            Vector.LstAutos.Add(objAuto);
+            IdAuto++;
         }
 
-        public Sector ProximoSectorPorDesocupar()
+        public IEnumerable<KeyValuePair<int, EstadoSector>> ProximoSectorPorDesocupar()
         {
             var listaSectoresOcupados = Sectores
-                .Where(sector => sector.EstadoSector is EstadoSector.Ocupado)
-                .OrderBy(sector => sector.Salida)
+                .Where(sector => sector.Value is EstadoSector.Ocupado)                
                 .ToList();
 
             if (!listaSectoresOcupados.Any())
                 throw new Exception("No hay sectores por desocupar.");
-
-            return listaSectoresOcupados.First();
+            yield return listaSectoresOcupados.First();
         }
 
-        public int ContarSectoresOcupados() => Sectores.Count(sector => sector.EstadoSector is EstadoSector.Ocupado);
-        public bool HayLugar() => Sectores.Any(sector => sector.EstadoSector is EstadoSector.Libre);
+        public Auto GetSalidaAuto() 
+        {
+            var objAuto = Vector.LstAutos.Where(auto => auto.Existe == true && auto.Estado == EstadoAuto.Estacionado).OrderBy(auto => auto.FinEstacionamiento).ToList().First();            
+            return objAuto;
+        }
+        public int ContarSectoresOcupados() => Sectores.Count(sector => sector.Value is EstadoSector.Ocupado);
+        public bool HayLugar() => Sectores.Any(sector => sector.Value is EstadoSector.Libre);
         public bool HayAlgunAuto() => !HayLugar();
         public bool HayAutoXCobrar() => Vector.LstCobro.Any();              
         public string GetEstadoCobro(TipoEvento evento) 
@@ -77,9 +82,8 @@ namespace tp5.Modelos.Dominio
         public int CalcularGanancia(TipoAuto tipoAuto, int tiempo) => tipoAuto == TipoAuto.Pequeño ? 80 * tiempo : tipoAuto == TipoAuto.Grande ? 100 * tiempo : 150 * tiempo;
         public void DesocuparSector(int id)
         {
-            var sectorPorDesocupar = Sectores.First(sector => sector.Id == id);
-            Sectores.Remove(sectorPorDesocupar);
-            Sectores.Add(Sector.CrearSectorLibre(sectorPorDesocupar.Id));
+            var sectorPorDesocupar = Sectores.First(sector => sector.Key == id);
+            Sectores[sectorPorDesocupar.Key] = EstadoSector.Libre;
         }
         /// <summary>
         /// Calcula el fin de cobro
@@ -111,6 +115,13 @@ namespace tp5.Modelos.Dominio
 
             siguienteEnCola.InicioCobro = finPrimeroEnCola;
             Vector.LstCobro.RemoveAt(0);
-        }        
+        }
+
+        public void EliminarAuto(int id) 
+        {
+            Vector.LstAutos[id].Existe = false;
+        }
+
+        public double GetPorcentajeOcupacion(double reloj, double media, int sectoresOcupados) => (1/reloj) * ((reloj - 1) * (media + sectoresOcupados))        ;
     }
 }

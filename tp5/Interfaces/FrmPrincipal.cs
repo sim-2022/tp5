@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using tp5.Modelos;
+using tp5.Modelos.Dominio;
 using tp5.Utilidades;
 
 namespace tp5.Interfaces
@@ -80,10 +81,13 @@ namespace tp5.Interfaces
         {
             if (Vector.LstCobro.Any())
                 Vector.LstCobro.Clear();
+            if (Vector.LstAutos.Any())
+                Vector.LstAutos.Clear();
 
             Vector.Lambda = ClsProbabilidades.IndiceLlegadas;
             Vector.TiempoCobro = ClsProbabilidades.TiempoCobro;
             Vector.GananciaAcumulada = 0;
+            PlayaEstacionamiento.IdAuto = 0;
 
             ListaEstadosVector.Clear();
             var timer = new Stopwatch();
@@ -147,10 +151,17 @@ namespace tp5.Interfaces
             timer.Start();
             var tabla = UiHelper.CrearEstructuraTabla();
 
-            ListaEstadosVector
+            var listaAmostrar = ListaEstadosVector
                 .Where(estado => estado.Indice >= numeroFilaDesde && estado.Indice <= numeroFilaHasta)
-                .ToList()
-                .ForEach(estado => UiHelper.AgregarFilaEnTabla(tabla, estado.Vector, estado.Indice));
+                .ToList();
+
+            listaAmostrar.ForEach(estado => UiHelper.AgregarFilaEnTabla(tabla, estado.Vector, estado.Indice));
+
+            var ultimaFila = ListaEstadosVector.Last();
+
+            if (!listaAmostrar.Contains(ultimaFila))
+                UiHelper.AgregarFilaEnTabla(tabla, ultimaFila.Vector, ultimaFila.Indice);
+
 
             dgvTabla.DataSource = tabla;
             dgvTabla.Refresh();

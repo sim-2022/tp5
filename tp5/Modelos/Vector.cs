@@ -15,7 +15,9 @@ namespace tp5.Modelos
         public static int Lambda;
         public static int TiempoCobro;
         public static int GananciaAcumulada;
-        public static List<Cobro> LstCobro = new List<Cobro>();                
+        public static List<Auto> LstCobro = new List<Auto>();
+        public static List<Auto> LstAutos = new List<Auto>();
+        public static double PorcentajeAC = 0;
         public double finCobro;
 
         public TipoEvento Evento { get; private set; }
@@ -33,6 +35,11 @@ namespace tp5.Modelos
         public int ColaCobro { get; private set; }        
         public double FinCobro { get; private set; }
         public int Ganancia { get; private set; }
+        public TipoAuto _tipoAuto { get; private set; }
+        public double FinEstacionamiento { get; private set; }
+        public double Permanencia { get; private set; }
+        public int idAuto { get; private set; }
+        public double Porcentaje { get; private set; }
         #endregion
 
         #region Comportamiento
@@ -45,10 +52,10 @@ namespace tp5.Modelos
             };
 
             if (PlayaEstacionamiento.HayAlgunAuto())
-            {
-                var proximoSectorPorLiberar = PlayaEstacionamiento.ProximoSectorPorDesocupar();
+            {                
+                var proximoAutoASalir = PlayaEstacionamiento.GetSalidaAuto();
                 var eventoFinEstacionamiento =
-                    (TipoEvento.FinEstacionamiento, TiempoRelojSalida: proximoSectorPorLiberar.Salida);
+                    (TipoEvento.FinEstacionamiento, TiempoRelojSalida: proximoAutoASalir.FinEstacionamiento);
                 listaProximosEventos.Add(eventoFinEstacionamiento);                
             }
      
@@ -121,12 +128,13 @@ namespace tp5.Modelos
 
             var playaEstacionamiento = PlayaEstacionamiento.Clonar();
             if (playaEstacionamiento.HayLugar())
-                playaEstacionamiento.EstacionarAuto(tiempoRelojSalidaAuto, tipoAuto,tiempoPermanencia);
+                playaEstacionamiento.EstacionarAuto(tiempoPermanencia, tipoAuto, tiempoRelojSalidaAuto);
             else
                 cantidadAutosSinEntrar += 1;
-
+           
             var tipoEvento = TipoEvento.LlegadaAuto;
-
+            var sectoresOcupados = playaEstacionamiento.ContarSectoresOcupados();
+            
             var nuevoVector = new Vector
             {
                 Reloj = ProximaLlegadaAuto,
@@ -144,22 +152,26 @@ namespace tp5.Modelos
                 ColaCobro = playaEstacionamiento.CalcularColaCobro(),
                 FinCobro = playaEstacionamiento.CalcularFinCobro(TiempoCobro),
                 Ganancia = GananciaAcumulada,
-            };
+                Porcentaje = playaEstacionamiento.GetPorcentajeOcupacion(proximaLlegadaAuto, PorcentajeAC, sectoresOcupados)
+            };           
+            
             return nuevoVector;
         }
 
         private Vector SimularFinEstacionamiento()
         {            
             var sectorPorDesocupar = PlayaEstacionamiento.ProximoSectorPorDesocupar();
-            var tiempoSalida = sectorPorDesocupar.Salida;
-            var tiempoPermanencia = sectorPorDesocupar.Tiempo/60; //Se divide para obtener la cantidad de horas en vez de minutos que un auto permanecio en la playa
+            var autoSalida = PlayaEstacionamiento.GetSalidaAuto();
+            var tiempoSalida = autoSalida.FinEstacionamiento;            
             var playaEstacionamiento = PlayaEstacionamiento.Clonar();
-            var tipoEvento = TipoEvento.FinEstacionamiento;
-            GananciaAcumulada += playaEstacionamiento.CalcularGanancia(TipoAuto, tiempoPermanencia);
-            playaEstacionamiento.DesocuparSector(sectorPorDesocupar.Id);
-            Cobro _cobro = new Cobro(tiempoSalida, tiempoSalida, 0);
-            _cobro.AgregarCobro();
-
+            var tipoEvento = TipoEvento.FinEstacionamiento;            
+            playaEstacionamiento.DesocuparSector(autoSalida.Sector);
+            Cobro _cobro = new Cobro();
+            _cobro.AgregarCobro(autoSalida);
+            autoSalida.InicioCobro = tiempoSalida;
+            autoSalida.Estado = EstadoAuto.Pagando;
+            var sectoresOcupados = playaEstacionamiento.ContarSectoresOcupados();
+            
             var nuevoVector = new Vector
             {
                 Reloj = tiempoSalida,
@@ -176,8 +188,8 @@ namespace tp5.Modelos
                 ColaCobro = playaEstacionamiento.CalcularColaCobro(),
                 FinCobro = playaEstacionamiento.CalcularFinCobro(TiempoCobro),
                 Ganancia = GananciaAcumulada,
-        };            
-
+                Porcentaje = playaEstacionamiento.GetPorcentajeOcupacion(tiempoSalida, PorcentajeAC, sectoresOcupados)
+            };     
             return nuevoVector;
         }
 
@@ -185,6 +197,11 @@ namespace tp5.Modelos
         {
             var playaEstacionamiento = PlayaEstacionamiento.Clonar();
             var tipoEvento = TipoEvento.FinCobro;
+            var idAuto = LstCobro.First().Id;
+            var autoCobro = LstAutos.Where(x => x.Id == idAuto).First();
+            var tiempoPermanencia = autoCobro.TiempoPermanencia / 60; //Se divide para obtener la cantidad de horas en vez de minutos que un auto permanecio en la playa
+            GananciaAcumulada += playaEstacionamiento.CalcularGanancia(autoCobro.Tipo, tiempoPermanencia);
+            var sectoresOcupados = playaEstacionamiento.ContarSectoresOcupados();
 
             var nuevoVector = new Vector
             {
@@ -201,14 +218,16 @@ namespace tp5.Modelos
                 EstadoCobro = playaEstacionamiento.GetEstadoCobro(tipoEvento),
                 ColaCobro = playaEstacionamiento.CalcularColaCobro(),
                 Ganancia = GananciaAcumulada,
-        };
+                Porcentaje = playaEstacionamiento.GetPorcentajeOcupacion(finCobro, PorcentajeAC, sectoresOcupados)
+            };
 
             if (LstCobro.Count > 1)
                 PlayaEstacionamiento.ActualizarFinCobro();
             else
-                LstCobro.RemoveAt(0); //Elimina de la lista el auto que ya se cobro
+                LstCobro.RemoveAt(0); //Elimina de la lista el auto que ya se cobro            
             nuevoVector.FinCobro = playaEstacionamiento.CalcularFinCobro(TiempoCobro, finCobro);
             nuevoVector.ColaCobro = playaEstacionamiento.CalcularColaCobro();
+            playaEstacionamiento.EliminarAuto(idAuto);
             return nuevoVector;
         }
         #endregion

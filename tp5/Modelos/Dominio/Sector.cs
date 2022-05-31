@@ -1,27 +1,16 @@
-﻿using tp5.Modelos.Dominio.Enumeradores;
-using tp5.Utilidades;
+﻿using System.Collections.Generic;
+using tp5.Modelos.Dominio.Enumeradores;
 
 namespace tp5.Modelos.Dominio
 {
-    public struct Sector
+    public class Sector
     {
-        public int Id { get; private set; }
-        public double Salida { get; private set; }
-        public string Estado => EstadoSector.ObtenerDescripcion();
-        public int Tiempo { get; private set; }
-        public TipoAuto? TipoAuto { get; private set; }
-        public EstadoSector EstadoSector => TipoAuto is null ? EstadoSector.Libre : EstadoSector.Ocupado;
-        
-        public static Sector CrearSectorLibre(int id) => new Sector() { Id = id };
-        public static Sector CrearSectorOcupado(int sectorLibreId, TipoAuto auto, double tiempoRelojSalida, int tiempo)
+        public Dictionary<int, EstadoSector> Sectores = new Dictionary<int, EstadoSector>();
+
+        public Sector(int cantidad) 
         {
-            return new Sector()
-            {
-                Id = sectorLibreId,
-                TipoAuto = auto,
-                Salida = tiempoRelojSalida,
-                Tiempo = tiempo,
-            };
-        }
+            for (var i = 0; i < cantidad; i++)
+                Sectores.Add(i, EstadoSector.Libre);
+        }        
     }
 }
